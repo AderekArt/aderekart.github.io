@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+
+    <title> Evolution Guide - Ulud Roars</title>
+  <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+
+  <style>
+  body {
+  background-color:#292929;
+      overflow-y: hidden;
+    margin: 0px;
+
+  }
+
+  @-webkit-keyframes bg-slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+
+.disable-select {
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+
+
+
+}
+.bg {
+	width: 200%;
+   background-image: url("imgs/grid.png") ;
+	position:absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    animation: bg-slide 100s linear infinite;
+
+}
+
+
+.wrapper {
+    position:relative;
+      width: max-content;
+	height: 100vh;
+    overflow:hidden;
+}
+
+.content {
+    position: relative;
+    text-align: center;
+    font-size: 26px;
+    color: #000;
+}
+
+.svgText {
+    pointer-events: none;
+}
+
+.encarte {
+  position: fixed;
+  z-index:10;
+  top:32px;
+  left:32px;
+  width:20vw;
+
+}
+.encarte img {
+   height: 100%;
+   width: 100%;
+  transition: 0.3s;
+
+}
+.encarte img:hover {
+   height: 100%;
+   width: 100%;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 255, 255));
+
+}
+
+.seal {
+  position: fixed;
+  z-index:10;
+  bottom:32px;
+  left:32px;
+  width:10vw;
+  filter: opacity(50%);
+      transition: 0.3s;
+
+
+}
+.seal img {
+   height: 100%;
+   width: 100%;
+
+}
+
+.seal:hover {
+ filter: opacity(100%);
+
+}
+  </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <div class="wrapper">
+    <div class="bg">
+
+    </div>
+
+    <div class="content">
+           <object class="svgText" style="height:100vh;" data="Diagrama.svg"></object>
+
+    </div>
+</div>
+
+<div class="encarte">
+<a href="https://ko-fi.com/aderek" target="_blank"><img src="imgs/Holder.png"></a>
+</div>
+
+<div class="seal">
+<a href="https://twitter.com/AderekArt" target="_blank"><img src="imgs/seal.png"></a>
+
+</div>
+
+<script>
+</script>
+  </body>
+</html>
