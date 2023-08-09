@@ -1,0 +1,164 @@
+Name,Stage,Spritesheet,Group
+Cocomon,Baby,False,Official Digimon
+Paomon,Baby,True,Official Digimon
+Poyomon,Baby,True,Official Digimon
+Pubumon,Baby,True,Official Digimon
+Puttimon,Baby,True,Official Digimon
+Arkadimon (Baby),In-Training,False,Official Digimon
+Chocomon,In-Training,False,Official Digimon
+Cupimon,In-Training,True,Official Digimon
+Motimon,In-Training,True,Official Digimon
+Nyaromon,In-Training,True,Official Digimon
+Tokomon,In-Training,True,Official Digimon
+Xiaomon,In-Training,True,Official Digimon
+Agumon X,Rookie,True,Official Digimon
+Agumon X Black,Rookie,True,Official Digimon
+Arkadimon Rookie,Rookie,False,Official Digimon
+Commandramon,Rookie,False,Official Digimon
+Falcomon,Rookie,False,Official Digimon
+Gabo,Rookie,False,Official Digimon
+Hackmon,Rookie,False,Official Digimon
+Junkmon,Rookie,False,Official Digimon
+Kotemon,Rookie,False,Official Digimon
+Kudamon,Rookie,False,Official Digimon
+Lopmon X,Rookie,False,Official Digimon
+Lucemon,Rookie,True,Official Digimon
+Madomon,Rookie,False,Official Digimon
+Morphomon,Rookie,False,Official Digimon
+Patamon,Rookie,True,Official Digimon
+PetitMamon,Rookie,False,Official Digimon
+Pillomon,Rookie,True,Official Digimon
+Salamon,Rookie,True,Official Digimon
+Salamon (Meicoomon),Rookie,True,Official Digimon
+Salamon X,Rookie,True,Official Digimon
+Shoutmon,Rookie,False,Official Digimon
+Spadamon,Rookie,True,Official Digimon
+Angemon,Champion/Armor,True,Official Digimon
+Aquilamon,Champion/Armor,True,Official Digimon
+Arkadimon Champion,Champion/Armor,False,Official Digimon
+BaoHackmon,Champion/Armor,False,Official Digimon
+Black Tailmon,Champion/Armor,True,Official Digimon
+Boarmon,Champion/Armor,False,Official Digimon
+Centaurmon,Champion/Armor,False,Official Digimon
+D'arcmon,Champion/Armor,True,Official Digimon
+Diatrymon,Champion/Armor,False,Official Digimon
+Dinohumon,Champion/Armor,False,Official Digimon
+Garbagemon,Champion/Armor,True,Official Digimon
+Gladimon,Champion/Armor,True,Official Digimon
+Greymon X,Champion/Armor,True,Official Digimon
+Greymon X Virus,Champion/Armor,True,Official Digimon
+Grizzlymon,Champion/Armor,False,Official Digimon
+Hookmon,Champion/Armor,False,Official Digimon
+Hudiemon,Champion/Armor,False,Official Digimon
+Igamon,Champion/Armor,False,Official Digimon
+Mikemon,Champion/Armor,True,Official Digimon
+Meicoomon,Champion/Armor,True,Official Digimon
+Mekanorimon,Champion/Armor,False,Official Digimon
+Omekamon,Champion/Armor,False,Official Digimon
+Pegasusmon,Champion/Armor,True,Official Digimon
+Pidmon,Champion/Armor,True,Official Digimon
+RedVegiemon,Champion/Armor,True,Official Digimon
+Shoutmon King,Champion/Armor,False,Official Digimon
+SkullKnightmon,Champion/Armor,True,Official Digimon
+Tailmon,Champion/Armor,True,Official Digimon
+Tailmon X,Champion/Armor,True,Official Digimon
+Tankmon,Champion/Armor,False,Official Digimon
+Tobucatmon,Champion/Armor,False,Official Digimon
+Tyrannomon X,Champion/Armor,True,Official Digimon
+Witchmon,Champion/Armor,True,Official Digimon
+Angewomon,Perfect,True,Official Digimon
+Angewomon X,Perfect,True,Official Digimon
+Arkadimon Perfect,Perfect,False,Official Digimon
+Assaultmon,Perfect,False,Official Digimon
+Baalmon X,Perfect,True,Official Digimon
+Beautymon,Perfect,False,Official Digimon
+CaptainHookmon,Perfect,False,Official Digimon
+Chirinmon,Perfect,False,Official Digimon
+DarkKnightmon,Perfect,True,Official Digimon
+HippoGriffomon,Perfect,True,Official Digimon
+HolyAngemon,Perfect,True,Official Digimon
+HolyAngemon Priest Mode,Perfect,True,Official Digimon
+Jyureimon,Perfect,False,Official Digimon
+Knightmon,Perfect,True,Official Digimon
+LadyDevimon,Perfect,True,Official Digimon
+Meicrackmon,Perfect,False,Official Digimon
+Meicrackmon Vicious Mode,Perfect,False,Official Digimon
+MetalGreymon X,Perfect,True,Official Digimon
+MetalGreymon X Antibody Virus,Perfect,True,Official Digimon
+MetalTyrannomon X,Perfect,True,Official Digimon
+Nefertimon,Perfect,True,Official Digimon
+OmegaShoutmon,Perfect,False,Official Digimon
+RizeGreymon X,Perfect,True,Official Digimon
+SaviorHackmon,Perfect,False,Official Digimon
+Shakkoumon,Perfect,True,Official Digimon
+ShogunGekomon,Perfect,False,Official Digimon
+Silphmon,Perfect,True,Official Digimon
+Yagataramon,Perfect,False,Official Digimon
+Abbadomon,Ultimate,False,Official Digimon
+Abbadomon Core,Ultimate,False,Official Digimon
+Alphamon,Ultimate,True,Official Digimon
+BanchoLilimon,Ultimate,True,Official Digimon
+BanchoLeomon,Ultimate,True,Official Digimon
+BeelStarmon X,Ultimate,False,Official Digimon
+BeelStarmon,Ultimate,True,Official Digimon
+Beelzemon X,Ultimate,False,Official Digimon
+BlackWargreymon X,Ultimate,True,Official Digimon
+Ceresmon,Ultimate,True,Official Digimon
+Chaosmon,Ultimate,False,Official Digimon
+Chaosmon Valdur,Ultimate,False,Official Digimon
+ClavisAngemon,Ultimate,True,Official Digimon
+Dianamon,Ultimate,True,Official Digimon
+Demon,Ultimate,False,Official Digimon
+Demon Mantled,Ultimate,False,Official Digimon
+Dominimon,Ultimate,True,Official Digimon
+Fujinmon,Ultimate,False,Official Digimon
+Goddramon,Ultimate,True,Official Digimon
+Holydramon X,Ultimate,True,Official Digimon
+HolyDramon,Ultimate,True,Official Digimon
+Jesmon,Ultimate,False,Official Digimon
+Junomon,Ultimate,True,Official Digimon
+Junomon Histeric,Ultimate,True,Official Digimon
+Jijimon,Ultimate,False,Official Digimon
+Lilithmon,Ultimate,True,Official Digimon
+LovelyAngemon,Ultimate,False,Official Digimon
+Mastemon,Ultimate,True,Official Digimon
+Metamorphmon,Ultimate,False,Official Digimon
+Mervamon,Ultimate,True,Official Digimon
+Minervamon,Ultimate,True,Official Digimon
+Omegamon X,Ultimate,False,Official Digimon
+Ophanimon,Ultimate,True,Official Digimon
+Ophanimon Falldown,Ultimate,True,Official Digimon
+Parallelmon,Ultimate,False,Official Digimon
+Raguelmon,Ultimate,False,Official Digimon
+Raidenmon,Ultimate,False,Official Digimon
+Raijinmon,Ultimate,False,Official Digimon
+Razielmon,Ultimate,False,Official Digimon
+Regulusmon,Ultimate,True,Official Digimon
+RustTyrannomon,Ultimate,False,Official Digimon
+Seraphimon,Ultimate,True,Official Digimon
+Shakamon,Ultimate,False,Official Digimon
+SlashAngemon,Ultimate,True,Official Digimon
+Sleipmon,Ultimate,False,Official Digimon
+Titamon,Ultimate,False,Official Digimon
+Valdurmon,Ultimate,True,Official Digimon
+Valkirymon,Ultimate,True,Official Digimon
+Venusmon,Ultimate,True,Official Digimon
+WarGreymon X,Ultimate,True,Official Digimon
+Alphamon Oryuuken,Super Ultimate,True,Official Digimon
+Arkadimon Super Ultimate,Super Ultimate,False,Official Digimon
+Demon Super Ultimate,Super Ultimate,True,Official Digimon
+Gaioumon Itto Mode,Super Ultimate,True,Official Digimon
+Omegamon Alter S,Super Ultimate,False,Official Digimon
+Ultimate Chaosmon,Super Ultimate,False,Official Digimon
+Ulforce Veedramon Future Mode,Super Ultimate,False,Official Digimon
+Suijinmon,Ultimate,False,Official Digimon
+Gatchmon,Standard,False,Appmon
+Hackmon(Appmon),Standard,False,Appmon
+DoGatchmon,Super,False,Appmon
+Raidramon,Super,False,Appmon
+Globemon,Ultimate,False,Appmon
+Satelamon,Ultimate,False,Appmon
+Warudamon,Ultimate,False,Appmon
+Revivemon,Ultimate,False,Appmon
+Hadesmon,God,False,Appmon
+Gaiamon,God,False,Appmon

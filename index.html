@@ -1,1 +1,358 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabbed Digimons</title>
+    <style>
+
+
+
+body, *, *::before, *::after {
+
+    margin:0;
+    font-family: 'Montserrat', sans-serif;
+    color:#fff;
+    /* overflow-y: hidden; */
+    box-sizing: border-box; 
+
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #4d6f92;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4f9ec5;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4f9ec5;
+}
+
+.shaper {
+  background: gray url("/img/bg.png") repeat 0 0;
+  background-size: contain;
+  background-attachment: fixed;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  min-height: 100vh;
+  height:100%;
+  box-sizing: border-box;
+  -webkit-animation: slide 30s linear infinite;
+}
+
+
+
+
+
+@-webkit-keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -512px 0; }
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.list .active {
+    display: flex!important;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 150px;
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease-in-out,  background-color 0.3s ease-in-out;
+
+    background-color: transparent;
+
+}
+
+.card img {
+    width:100%;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    -webkit-filter: drop-shadow(1px 1px 0  #fff)
+        drop-shadow(-1px 1px 0  #fff)
+        drop-shadow(1px -1px 0  #fff)
+        drop-shadow(-1px -1px 0  #fff);
+
+    filter: drop-shadow(1px 1px 0 #fff)
+            drop-shadow(-1px 1px 0  #fff)
+            drop-shadow(1px -1x 0  #fff)
+            drop-shadow(-1px -1px 0  #fff);   
+}
+
+.card:hover {
+    transform: scale(1.1);
+    background-color: #4d6f92;
+}
+
+.spritesheet {
+}
+
+.spritesheet img {
+    -webkit-filter: drop-shadow(1px 1px 0  #00ff00)
+        drop-shadow(-1px 1px 0  #00ff00)
+        drop-shadow(1px -1px 0  #00ff00)
+        drop-shadow(-1px -1px 0  #00ff00);
+
+    filter: drop-shadow(1px 1px 0 #00ff00)
+            drop-shadow(-1px 1px 0  #00ff00)
+            drop-shadow(1px -1x 0  #00ff00)
+            drop-shadow(-1px -1px 0  #00ff00);    
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: flex; 
+    flex-direction: column;
+    max-height: 100%;
+}
+.stage-tab-content.active {
+    display: flex; 
+    flex-wrap: wrap; 
+    flex-direction: row;
+    max-height: 100%;
+
+    justify-content: center; 
+    background-color: rgba(0,0,0,0.5);
+    border: 8px solid #90d8e7;
+    border-bottom-left-radius: 10px; /* Borda superior esquerda */
+    border-bottom-right-radius: 10px; /* Borda inferior direita */
+    overflow-y: auto; /* Scroll vertical se necessário */
+}
+
+.row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        box-sizing: border-box; /* Adicione esta linha */
+        grid-column-gap: 10px;
+
+}
+
+.tab {
+    padding: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color:white;
+    text-shadow: 1px 1px 0 #60767e;
+
+}
+.tab img{
+    width:25%;
+    transition: filter 0.3s ease-in-out;
+}
+.tab img:hover{
+    filter:drop-shadow(0px 0px 4px #60767e)
+}
+.tab.active img {
+    filter:drop-shadow(0px 0px 4px #90d8e7)
+}
+.stage-tab {
+    background-color: #60767e;
+    margin-top:32px;
+    height:100%
+    transition: background-color 0.3s ease-in-out, height 0.3s ease-in;
+}
+.stage-tab.active {
+    background-color: #90d8e7;
+}
+
+.content {
+    width:100%;
+    padding:32px;
+    display: flex;
+    flex-direction: column; 
+    /* Se content é para se comportar como 'parent', adicione isto: */
+    display: flex;
+    flex-direction: column; 
+
+}
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="shaper">
+<div class="content">
+
+</div>
+</div>
+
+    <script>
+window.onload = function() {
+    fetch('digimons.csv')
+        .then(response => response.text())
+        .then(data => {
+            let csvData = data.split('\n').slice(1); // Remove the header row
+
+            let cards = [];
+            let spritesheets = [];
+            let groups = {};
+
+            csvData.forEach(row => {
+                let cols = row.split(',');
+
+                // Skip if row is not valid
+                if (cols.length < 4) return;
+
+                if (!groups[cols[3]]) {
+                    groups[cols[3]] = {};
+                }
+                if (!groups[cols[3]][cols[1]]) {
+                    groups[cols[3]][cols[1]] = [];
+                }
+
+                groups[cols[3]][cols[1]].push({
+                    name: cols[0],
+                    isSpritesheet: cols[2] === 'True'
+                });
+            });
+
+            let content = document.querySelector('.content');
+
+            let groupTabContainer = document.createElement('div');
+            groupTabContainer.classList.add('row');
+            for(let groupName in groups) {
+                let groupTab = document.createElement('button');
+                groupTab.classList.add('tab');
+                groupTab.dataset.tabTarget = groupName;
+
+                if (groupTab.classList.contains('stage-tab')) {
+                    groupTab.textContent = groupName;
+                } else {
+                    let img = document.createElement('img');
+                    img.src = `img/${groupName}.png`;
+                    img.alt = groupName;
+                    groupTab.appendChild(img);
+                }
+
+                groupTabContainer.appendChild(groupTab);
+
+                let groupTabContent = document.createElement('div');
+                groupTabContent.classList.add('tab-content');
+                groupTabContent.id = groupName;
+
+                let stageTabContainer = document.createElement('div');
+                stageTabContainer.classList.add('row');
+                groupTabContent.appendChild(stageTabContainer);
+
+                for(let stageName in groups[groupName]) {
+                    let stageTab = document.createElement('button');
+                    stageTab.classList.add('tab', 'stage-tab');
+                    stageTab.textContent = stageName;
+                    stageTab.dataset.tabTarget = groupName + '-' + stageName;
+                    stageTabContainer.appendChild(stageTab);
+
+                    let stageList = document.createElement('div');
+                    stageList.classList.add('list', 'tab-content', 'stage-tab-content');
+                    stageList.id = groupName + '-' + stageName;
+
+                    groups[groupName][stageName].sort((a, b) => a.name.localeCompare(b.name)).forEach(digimon => {
+                        let card = document.createElement('div');
+                        card.classList.add('card');
+
+                        if (digimon.isSpritesheet) {
+                            card.classList.add('spritesheet');
+                            spritesheets.push(card);
+                        } else {
+                            cards.push(card);
+                        }
+
+                        let img = document.createElement('img');
+                        img.src = `Sprites/${digimon.name}.png`;
+                        img.alt = digimon.name;
+                        card.appendChild(img);
+
+                        let p = document.createElement('p');
+                        p.textContent = digimon.name;
+                        card.appendChild(p);
+
+                        stageList.appendChild(card);
+                    });
+
+                    groupTabContent.appendChild(stageList);
+                }
+
+                content.appendChild(groupTabContent);
+            }
+
+            content.insertBefore(groupTabContainer, content.firstChild);
+// Função para tratar o evento de clique nos tabs
+function handleTabClick(e) {
+    let isStageTab = e.currentTarget.classList.contains('stage-tab');
+
+    // Remove 'active' de todos os elementos relevantes
+    document.querySelectorAll('.tab' + (isStageTab ? '.stage-tab' : '') + ', .tab-content' + (isStageTab ? '.stage-tab-content' : '')).forEach(item => {
+        item.classList.remove('active');
+    });
+
+    // Adiciona 'active' ao tab clicado e ao seu conteúdo correspondente
+    e.currentTarget.classList.add('active');
+    let targetElement = document.getElementById(e.currentTarget.dataset.tabTarget);
+    
+    if (targetElement) {
+        targetElement.classList.add('active');
+    } else {
+        console.error("No target element found for tab with dataset:", e.currentTarget.dataset);
+    }
+}
+
+// Adiciona ouvinte de evento a todos os tabs
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', handleTabClick);
+});
+
+// Ao clicar em um tab que não é um stage-tab, selecione aleatoriamente um stage-tab para ativar
+document.querySelectorAll('.tab:not(.stage-tab)').forEach(groupTab => {
+    groupTab.addEventListener('click', e => {
+        let stageTabsInGroup = document.querySelectorAll('.stage-tab[data-tab-target^="' + e.currentTarget.dataset.tabTarget + '"]');
+        let randomStageTab = stageTabsInGroup[Math.floor(Math.random() * stageTabsInGroup.length)];
+
+        // Ativa programaticamente o stage-tab aleatório
+        if (randomStageTab && !randomStageTab.classList.contains('active')) {
+            randomStageTab.dispatchEvent(new Event('click', { 'bubbles': true }));
+        }
+    });
+});
+
+            // Encontre a aba "Official Digimon" e clique nela ao carregar a página
+            let officialDigimonTab = document.querySelector('.tab[data-tab-target="Official Digimon"]');
+            if (officialDigimonTab) {
+                setTimeout(officialDigimonTab.click(), 100);
+
+            }
+
+
+
+
+        });
+};
+
+
+    </script>
+</body>
+</html>
