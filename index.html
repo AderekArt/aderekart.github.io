@@ -207,7 +207,7 @@ body, *, *::before, *::after {
 </div>
 </div>
 
-    <script>
+ <script>
 window.onload = function() {
     fetch('digimons.csv')
         .then(response => response.text())
@@ -241,19 +241,32 @@ window.onload = function() {
 
             let groupTabContainer = document.createElement('div');
             groupTabContainer.classList.add('row');
-            for(let groupName in groups) {
+            for (let groupName in groups) {
                 let groupTab = document.createElement('button');
                 groupTab.classList.add('tab');
                 groupTab.dataset.tabTarget = groupName;
 
-                if (groupTab.classList.contains('stage-tab')) {
-                    groupTab.textContent = groupName;
-                } else {
-                    let img = document.createElement('img');
-                    img.src = `img/${groupName}.png`;
-                    img.alt = groupName;
-                    groupTab.appendChild(img);
+                let img = document.createElement('img');
+                img.src = `img/${groupName}.png`;
+                img.alt = groupName;
+                groupTab.appendChild(img);
+
+                let totalSprites = 0;
+                let totalSpritesheets = 0;
+
+                for (let stageName in groups[groupName]) {
+                    for (let digimon of groups[groupName][stageName]) {
+                        if (digimon.isSpritesheet) {
+                            totalSpritesheets++;
+                        } else {
+                            totalSprites++;
+                        }
+                    }
                 }
+
+                let spriteCountText = document.createElement('p');
+                spriteCountText.innerHTML = `Sprites: ${totalSprites + totalSpritesheets} <br> Spritesheets: ${totalSpritesheets}`;
+                groupTab.appendChild(spriteCountText);
 
                 groupTabContainer.appendChild(groupTab);
 
@@ -265,7 +278,7 @@ window.onload = function() {
                 stageTabContainer.classList.add('row');
                 groupTabContent.appendChild(stageTabContainer);
 
-                for(let stageName in groups[groupName]) {
+                for (let stageName in groups[groupName]) {
                     let stageTab = document.createElement('button');
                     stageTab.classList.add('tab', 'stage-tab');
                     stageTab.textContent = stageName;
