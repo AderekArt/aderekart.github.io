@@ -76,7 +76,12 @@ user-select: none;
     from { background-position: 0 0; }
     to { background-position: -512px 0; }
 }
-
+.subgroup {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 .list {
     display: flex;
     flex-wrap: wrap;
@@ -239,10 +244,13 @@ window.onload = function() {
                     groups[cols[3]] = {};
                 }
                 if (!groups[cols[3]][cols[1]]) {
-                    groups[cols[3]][cols[1]] = [];
+                    groups[cols[3]][cols[1]] = {};
+                }
+                if (!groups[cols[3]][cols[1]][cols[4]]) {
+                    groups[cols[3]][cols[1]][cols[4]] = [];
                 }
 
-                groups[cols[3]][cols[1]].push({
+                groups[cols[3]][cols[1]][cols[4]].push({
                     name: cols[0],
                     isSpritesheet: cols[2] === 'True'
                 });
@@ -266,11 +274,13 @@ window.onload = function() {
                 let totalSpritesheets = 0;
 
                 for (let stageName in groups[groupName]) {
-                    for (let digimon of groups[groupName][stageName]) {
-                        if (digimon.isSpritesheet) {
-                            totalSpritesheets++;
-                        } else {
-                            totalSprites++;
+                    for (let subGroupName in groups[groupName][stageName]) {
+                        for (let digimon of groups[groupName][stageName][subGroupName]) {
+                            if (digimon.isSpritesheet) {
+                                totalSpritesheets++;
+                            } else {
+                                totalSprites++;
+                            }
                         }
                     }
                 }
@@ -300,28 +310,41 @@ window.onload = function() {
                     stageList.classList.add('list', 'tab-content', 'stage-tab-content');
                     stageList.id = groupName + '-' + stageName;
 
-                    groups[groupName][stageName].sort((a, b) => a.name.localeCompare(b.name)).forEach(digimon => {
-                        let card = document.createElement('div');
-                        card.classList.add('card');
+                    for (let subGroupName in groups[groupName][stageName]) {
+                        if (groups[groupName][stageName][subGroupName].length > 0) {
+                            let subGroupTitle = document.createElement('h2');
+                            subGroupTitle.textContent = subGroupName;
+                            stageList.appendChild(subGroupTitle);
 
-                        if (digimon.isSpritesheet) {
-                            card.classList.add('spritesheet');
-                            spritesheets.push(card);
-                        } else {
-                            cards.push(card);
+                            let subGroupDiv = document.createElement('div');
+                            subGroupDiv.classList.add('subgroup');
+
+                            groups[groupName][stageName][subGroupName].sort((a, b) => a.name.localeCompare(b.name)).forEach(digimon => {
+                                let card = document.createElement('div');
+                                card.classList.add('card');
+
+                                if (digimon.isSpritesheet) {
+                                    card.classList.add('spritesheet');
+                                    spritesheets.push(card);
+                                } else {
+                                    cards.push(card);
+                                }
+
+                                let img = document.createElement('img');
+                                img.src = `Sprites/${digimon.name}.png`;
+                                img.alt = digimon.name;
+                                card.appendChild(img);
+
+                                let p = document.createElement('p');
+                                p.textContent = digimon.name;
+                                card.appendChild(p);
+
+                                subGroupDiv.appendChild(card);
+                            });
+
+                            stageList.appendChild(subGroupDiv);
                         }
-
-                        let img = document.createElement('img');
-                        img.src = `Sprites/${digimon.name}.png`;
-                        img.alt = digimon.name;
-                        card.appendChild(img);
-
-                        let p = document.createElement('p');
-                        p.textContent = digimon.name;
-                        card.appendChild(p);
-
-                        stageList.appendChild(card);
-                    });
+                    }
 
                     groupTabContent.appendChild(stageList);
                 }
@@ -330,6 +353,8 @@ window.onload = function() {
             }
 
             content.insertBefore(groupTabContainer, content.firstChild);
+        
+
 // Função para tratar o evento de clique nos tabs
 function handleTabClick(e) {
     let isStageTab = e.currentTarget.classList.contains('stage-tab');
