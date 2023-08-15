@@ -224,10 +224,25 @@ user-select: none;
 </div>
 
  <script>
+
+
+// Função assíncrona para verificar a existência de um arquivo
+async function fileExists(url) {
+    try {
+        const response = await fetch(url, {
+            method: 'HEAD',
+            cache: 'no-cache'
+        });
+        return response.status === 200;
+    } catch (error) {
+        return false;
+    }
+}
+
 window.onload = function() {
     fetch('digimons.csv')
         .then(response => response.text())
-        .then(data => {
+        .then(async data => { 
             let csvData = data.split('\n').slice(1); // Remove the header row
 
             let cards = [];
@@ -319,28 +334,37 @@ window.onload = function() {
                             let subGroupDiv = document.createElement('div');
                             subGroupDiv.classList.add('subgroup');
 
-                            groups[groupName][stageName][subGroupName].sort((a, b) => a.name.localeCompare(b.name)).forEach(digimon => {
-                                let card = document.createElement('div');
-                                card.classList.add('card');
+                            groups[groupName][stageName][subGroupName].sort((a, b) => a.name.localeCompare(b.name)).forEach(async (digimon) => { // Adicionado async aqui
+                let card = document.createElement('div');
+                card.classList.add('card');
 
-                                if (digimon.isSpritesheet) {
-                                    card.classList.add('spritesheet');
-                                    spritesheets.push(card);
-                                } else {
-                                    cards.push(card);
-                                }
+                if (digimon.isSpritesheet) {
+                    card.classList.add('spritesheet');
+                    spritesheets.push(card);
+                } else {
+                    cards.push(card);
+                }
 
-                                let img = document.createElement('img');
-                                img.src = `Sprites/${digimon.name}.png`;
-                                img.alt = digimon.name;
-                                card.appendChild(img);
+                let img = document.createElement('img');
+                img.alt = digimon.name;
 
-                                let p = document.createElement('p');
-                                p.textContent = digimon.name;
-                                card.appendChild(p);
+                // Verifica se o GIF existe, se sim, define o src para o GIF, caso contrário, define para o PNG
+                const gifPath = `Sprites/${digimon.name}.gif`;
+                if (await fileExists(gifPath)) { // Adicionado await aqui
+                    img.src = gifPath;
+                } else {
+                    img.src = `Sprites/${digimon.name}.png`;
+                }
 
-                                subGroupDiv.appendChild(card);
-                            });
+                card.appendChild(img);
+
+                let p = document.createElement('p');
+                p.textContent = digimon.name;
+                card.appendChild(p);
+
+                subGroupDiv.appendChild(card);
+            });
+
 
                             stageList.appendChild(subGroupDiv);
                         }
@@ -353,7 +377,7 @@ window.onload = function() {
             }
 
             content.insertBefore(groupTabContainer, content.firstChild);
-        
+
 
 // Função para tratar o evento de clique nos tabs
 function handleTabClick(e) {
