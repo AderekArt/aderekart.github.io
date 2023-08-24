@@ -20,7 +20,6 @@ Hackmon,Rookie,False,Official Digimon,
 Junkmon,Rookie,False,Official Digimon,
 Kotemon,Rookie,False,Official Digimon,
 Kudamon,Rookie,False,Official Digimon,
-Lopmon X,Rookie,False,Official Digimon,X-Antibody
 Lucemon,Rookie,True,Official Digimon,
 Madomon,Rookie,False,Official Digimon,
 Morphomon,Rookie,False,Official Digimon,
@@ -32,6 +31,7 @@ Salamon (Meicoomon),Rookie,True,Official Digimon,
 Salamon X,Rookie,True,Official Digimon,
 Shoutmon,Rookie,False,Official Digimon,
 Spadamon,Rookie,True,Official Digimon,
+Lopmon X,Rookie,False,Official Digimon,X-Antibody
 Agumon X,Rookie,True,Official Digimon,X-Antibody
 Agumon X Black,Rookie,True,Official Digimon,X-Antibody
 Angemon,Champion/Armor,True,Official Digimon,
@@ -47,8 +47,6 @@ Dinohumon,Champion/Armor,False,Official Digimon,
 Garbagemon,Champion/Armor,True,Official Digimon,
 Gladimon,Champion/Armor,True,Official Digimon,
 Greymon (OVA),Champion/Armor,False,Official Digimon,
-Greymon X,Champion/Armor,True,Official Digimon,X-Antibody
-Greymon X Virus,Champion/Armor,True,Official Digimon,X-Antibody
 Grizzlymon,Champion/Armor,False,Official Digimon,
 Hookmon,Champion/Armor,False,Official Digimon,
 Hudiemon,Champion/Armor,False,Official Digimon,
@@ -63,16 +61,16 @@ RedVegiemon,Champion/Armor,True,Official Digimon,
 Shoutmon King,Champion/Armor,False,Official Digimon,
 SkullKnightmon,Champion/Armor,True,Official Digimon,
 Tailmon,Champion/Armor,True,Official Digimon,
-Tailmon X,Champion/Armor,True,Official Digimon,X-Antibody
 Tankmon,Champion/Armor,False,Official Digimon,
 Tobucatmon,Champion/Armor,False,Official Digimon,
+Greymon X,Champion/Armor,True,Official Digimon,X-Antibody
+Greymon X Virus,Champion/Armor,True,Official Digimon,X-Antibody
+Tailmon X,Champion/Armor,True,Official Digimon,X-Antibody
 Tyrannomon X,Champion/Armor,True,Official Digimon,X-Antibody
 Witchmon,Champion/Armor,True,Official Digimon,
 Angewomon,Perfect,True,Official Digimon,
-Angewomon X,Perfect,True,Official Digimon,X-Antibody
 Arkadimon Perfect,Perfect,False,Official Digimon,
 Assaultmon,Perfect,False,Official Digimon,
-Baalmon X,Perfect,True,Official Digimon,X-Antibody
 Bastemon,Perfect,False,Official Digimon,
 CaptainHookmon,Perfect,False,Official Digimon,
 Chirinmon,Perfect,False,Official Digimon,
@@ -85,30 +83,28 @@ Knightmon,Perfect,True,Official Digimon,
 LadyDevimon,Perfect,True,Official Digimon,
 Meicrackmon,Perfect,False,Official Digimon,
 Meicrackmon Vicious Mode,Perfect,False,Official Digimon,
-MetalGreymon X,Perfect,True,Official Digimon,X-Antibody
-MetalGreymon X Antibody Virus,Perfect,True,Official Digimon,X-Antibody
-MetalTyrannomon X,Perfect,True,Official Digimon,X-Antibody
 Nefertimon,Perfect,True,Official Digimon,
 OmegaShoutmon,Perfect,False,Official Digimon,
 Parrotmon,Perfect,False,Official Digimon,
-RizeGreymon X,Perfect,True,Official Digimon,X-Antibody
 SaviorHackmon,Perfect,False,Official Digimon,
 Shakkoumon,Perfect,True,Official Digimon,
 ShogunGekomon,Perfect,False,Official Digimon,
 Silphmon,Perfect,True,Official Digimon,
 Yagataramon,Perfect,False,Official Digimon,
+Angewomon X,Perfect,True,Official Digimon,X-Antibody
+Baalmon X,Perfect,True,Official Digimon,X-Antibody
+MetalGreymon X,Perfect,True,Official Digimon,X-Antibody
+MetalGreymon X Antibody Virus,Perfect,True,Official Digimon,X-Antibody
+MetalTyrannomon X,Perfect,True,Official Digimon,X-Antibody
+RizeGreymon X,Perfect,True,Official Digimon,X-Antibody
 Abbadomon,Ultimate,False,Official Digimon,
 Abbadomon Core,Ultimate,False,Official Digimon,
 Alphamon,Ultimate,True,Official Digimon,
 BanchoLilimon,Ultimate,True,Official Digimon,
 BanchoLeomon,Ultimate,True,Official Digimon,
-BeelStarmon X,Ultimate,False,Official Digimon,X-Antibody
 BeelStarmon,Ultimate,True,Official Digimon,
-Beelzemon X,Ultimate,False,Official Digimon,X-Antibody
-BlackWargreymon X,Ultimate,True,Official Digimon,X-Antibody
 Ceresmon,Ultimate,True,Official Digimon,
-Chaosmon,Super Ultimate,False,Official Digimon,
-Chaosmon Valdur,Super Ultimate,False,Official Digimon,
+Crossmon,Ultimate,False,Official Digimon,
 ClavisAngemon,Ultimate,True,Official Digimon,
 Dianamon,Ultimate,True,Official Digimon,
 Demon,Ultimate,False,Official Digimon,
@@ -116,7 +112,6 @@ Demon Mantled,Ultimate,False,Official Digimon,
 Dominimon,Ultimate,True,Official Digimon,
 Fujinmon,Ultimate,False,Official Digimon,
 Goddramon,Ultimate,True,Official Digimon,
-Holydramon X,Ultimate,True,Official Digimon,X-Antibody
 HolyDramon,Ultimate,True,Official Digimon,
 Jesmon,Ultimate,False,Official Digimon,
 Junomon,Ultimate,True,Official Digimon,
@@ -128,12 +123,10 @@ Mastemon,Ultimate,True,Official Digimon,
 Metamorphmon,Ultimate,False,Official Digimon,
 Mervamon,Ultimate,True,Official Digimon,
 Minervamon,Ultimate,True,Official Digimon,
-Omegamon X,Super Ultimate,False,Official Digimon,X-Antibody
-Ophanimon,Ultimate,True,Official Digimon,
 Ophanimon Falldown,Ultimate,True,Official Digimon,
+Ophanimon,Ultimate,True,Official Digimon,
 Parallelmon,Ultimate,False,Official Digimon,
 Raguelmon,Ultimate,False,Official Digimon,
-Raidenmon,Super Ultimate,False,Official Digimon,
 Raijinmon,Ultimate,False,Official Digimon,
 Razielmon,Ultimate,False,Official Digimon,
 Regulusmon,Ultimate,True,Official Digimon,
@@ -142,20 +135,28 @@ Seraphimon,Ultimate,True,Official Digimon,
 Shakamon,Ultimate,False,Official Digimon,
 SlashAngemon,Ultimate,True,Official Digimon,
 Sleipmon,Ultimate,False,Official Digimon,
+Suijinmon,Ultimate,False,Official Digimon,
 Titamon,Ultimate,False,Official Digimon,
 Valdurmon,Ultimate,True,Official Digimon,
 Valkirymon,Ultimate,True,Official Digimon,
 Venusmon,Ultimate,True,Official Digimon,
+BeelStarmon X,Ultimate,False,Official Digimon,X-Antibody
+Beelzemon X,Ultimate,False,Official Digimon,X-Antibody
+BlackWargreymon X,Ultimate,True,Official Digimon,X-Antibody
+Holydramon X,Ultimate,True,Official Digimon,X-Antibody
 WarGreymon X,Ultimate,True,Official Digimon,X-Antibody
 Alphamon Oryuuken,Super Ultimate,True,Official Digimon,
 Arkadimon Super Ultimate,Super Ultimate,False,Official Digimon,
+Chaosmon,Super Ultimate,False,Official Digimon,
+Chaosmon Valdur,Super Ultimate,False,Official Digimon,
 Demon Super Ultimate,Super Ultimate,True,Official Digimon,
 Gaioumon Itto Mode,Super Ultimate,True,Official Digimon,
 Ordinemon,Super Ultimate,False,Official Digimon,
 Omegamon Alter S,Super Ultimate,False,Official Digimon,
+Raidenmon,Super Ultimate,False,Official Digimon,
 Ultimate Chaosmon,Super Ultimate,False,Official Digimon,
 Ulforce Veedramon Future Mode,Super Ultimate,False,Official Digimon,
-Suijinmon,Ultimate,False,Official Digimon,
+Omegamon X,Super Ultimate,False,Official Digimon,X-Antibody
 Gatchmon,Standard,False,Appmon,
 Hackmon(Appmon),Standard,False,Appmon,
 DoGatchmon,Super,False,Appmon,

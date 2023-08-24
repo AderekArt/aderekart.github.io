@@ -325,6 +325,8 @@ window.onload = function() {
                     stageList.classList.add('list', 'tab-content', 'stage-tab-content');
                     stageList.id = groupName + '-' + stageName;
 
+                    groupTabContent.appendChild(stageList);
+
                     for (let subGroupName in groups[groupName][stageName]) {
                         if (groups[groupName][stageName][subGroupName].length > 0) {
                             let subGroupTitle = document.createElement('h2');
@@ -334,46 +336,53 @@ window.onload = function() {
                             let subGroupDiv = document.createElement('div');
                             subGroupDiv.classList.add('subgroup');
 
-                            groups[groupName][stageName][subGroupName].sort((a, b) => a.name.localeCompare(b.name)).forEach(async (digimon) => { // Adicionado async aqui
-                let card = document.createElement('div');
-                card.classList.add('card');
+                            let cardPromises = groups[groupName][stageName][subGroupName].sort((a, b) => {
+                                let nameA = a.name.toLowerCase();
+                                let nameB = b.name.toLowerCase();
+                                if (nameA < nameB) return -1;
+                                if (nameA > nameB) return 1;
+                                return 0;
+                            }).map(async (digimon) => {
+                                let card = document.createElement('div');
+                                card.classList.add('card');
 
-                if (digimon.isSpritesheet) {
-                    card.classList.add('spritesheet');
-                    spritesheets.push(card);
-                } else {
-                    cards.push(card);
-                }
+                                if (digimon.isSpritesheet) {
+                                    card.classList.add('spritesheet');
+                                    spritesheets.push(card);
+                                } else {
+                                    cards.push(card);
+                                }
 
-                let img = document.createElement('img');
-                img.alt = digimon.name;
+                                let img = document.createElement('img');
+                                img.alt = digimon.name;
 
-                // Verifica se o GIF existe, se sim, define o src para o GIF, caso contrário, define para o PNG
-                const gifPath = `Sprites/${digimon.name}.gif`;
-                if (await fileExists(gifPath)) { // Adicionado await aqui
-                    img.src = gifPath;
-                } else {
-                    img.src = `Sprites/${digimon.name}.png`;
-                }
+                                // Verifica se o GIF existe, se sim, define o src para o GIF, caso contrário, define para o PNG
+                                const gifPath = `Sprites/${digimon.name}.gif`;
+                                if (await fileExists(gifPath)) {
+                                    img.src = gifPath;
+                                } else {
+                                    img.src = `Sprites/${digimon.name}.png`;
+                                }
 
-                card.appendChild(img);
+                                card.appendChild(img);
 
-                let p = document.createElement('p');
-                p.textContent = digimon.name;
-                card.appendChild(p);
+                                let p = document.createElement('p');
+                                p.textContent = digimon.name;
+                                card.appendChild(p);
 
-                subGroupDiv.appendChild(card);
-            });
+                                return card;
+                            });
 
+                            Promise.all(cardPromises).then(cards => {
+                                cards.forEach(card => subGroupDiv.appendChild(card));
+                            });
 
                             stageList.appendChild(subGroupDiv);
                         }
                     }
-
-                    groupTabContent.appendChild(stageList);
                 }
-
                 content.appendChild(groupTabContent);
+
             }
 
             content.insertBefore(groupTabContainer, content.firstChild);
