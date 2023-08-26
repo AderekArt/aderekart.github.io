@@ -102,8 +102,12 @@ user-select: none;
     transition: transform 0.3s ease-in-out,  background-color 0.3s ease-in-out;
 
     background-color: transparent;
+    border: 2px solid #90d8e7;
+    border-radius: 10px;
 
 }
+
+
 
 .card img {
     width:100%;
@@ -130,15 +134,15 @@ user-select: none;
 }
 
 .spritesheet img {
-    -webkit-filter: drop-shadow(1px 1px 0  #00ff00)
-        drop-shadow(-1px 1px 0  #00ff00)
-        drop-shadow(1px -1px 0  #00ff00)
-        drop-shadow(-1px -1px 0  #00ff00);
+    -webkit-filter: drop-shadow(1px 1px 0  #90d8e7)
+        drop-shadow(-1px 1px 0  #90d8e7)
+        drop-shadow(1px -1px 0  #90d8e7)
+        drop-shadow(-1px -1px 0  #90d8e7);
 
-    filter: drop-shadow(1px 1px 0 #00ff00)
-            drop-shadow(-1px 1px 0  #00ff00)
-            drop-shadow(1px -1x 0  #00ff00)
-            drop-shadow(-1px -1px 0  #00ff00);    
+    filter: drop-shadow(1px 1px 0 #90d8e7)
+            drop-shadow(-1px 1px 0  #90d8e7)
+            drop-shadow(1px -1x 0  #90d8e7)
+            drop-shadow(-1px -1px 0  #90d8e7);    
 }
 
 .tab-content {
@@ -365,10 +369,15 @@ window.onload = function() {
                                 }
 
                                 card.appendChild(img);
+                                let scrollcontainer = document.createElement('div');
+                                scrollcontainer.classList.add('scroll-container');
 
                                 let p = document.createElement('p');
                                 p.textContent = digimon.name;
-                                card.appendChild(p);
+                                p.classList.add('scroll-text');
+                                scrollcontainer.appendChild(p);
+
+                                card.appendChild(scrollcontainer);
 
                                 return card;
                             });
