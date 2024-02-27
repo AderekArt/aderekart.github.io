@@ -13,6 +13,7 @@ Tokomon,In-Training,True,Official Digimon,
 Xiaomon,In-Training,True,Official Digimon,
 Agumon (OVA),Rookie,False,Official Digimon,
 Arkadimon Rookie,Rookie,False,Official Digimon,
+Bacomon,Rookie,False,Official Digimon,
 Commandramon,Rookie,False,Official Digimon,
 Elecmon,Rookie,False,Official Digimon,
 Falcomon,Rookie,False,Official Digimon,
@@ -36,6 +37,7 @@ Vi Elecmon,Rookie,False,Official Digimon,
 Lopmon X,Rookie,False,Official Digimon,X-Antibody
 Agumon X,Rookie,True,Official Digimon,X-Antibody
 Agumon X Black,Rookie,True,Official Digimon,X-Antibody
+Impmon X,Rookie,False,Official Digimon,X-Antibody
 Angemon,Champion/Armor,True,Official Digimon,
 Aquilamon,Champion/Armor,True,Official Digimon,
 Arkadimon Champion,Champion/Armor,False,Official Digimon,
@@ -57,6 +59,7 @@ Hudiemon,Champion/Armor,False,Official Digimon,
 Igamon,Champion/Armor,False,Official Digimon,
 Lianpumon,Champion/Armor,False,Official Digimon,
 Mikemon,Champion/Armor,True,Official Digimon,
+Mimicmon,Champion/Armor,False,Official Digimon,
 Meicoomon,Champion/Armor,True,Official Digimon,
 Mekanorimon,Champion/Armor,False,Official Digimon,
 Omekamon,Champion/Armor,False,Official Digimon,
@@ -72,6 +75,7 @@ Greymon X,Champion/Armor,True,Official Digimon,X-Antibody
 Greymon X Virus,Champion/Armor,True,Official Digimon,X-Antibody
 Tailmon X,Champion/Armor,True,Official Digimon,X-Antibody
 Tyrannomon X,Champion/Armor,True,Official Digimon,X-Antibody
+Wizardmon X,Champion/Armor,True,Official Digimon,X-Antibody
 Witchmon,Champion/Armor,True,Official Digimon,
 Angewomon,Perfect,True,Official Digimon,
 Arkadimon Perfect,Perfect,False,Official Digimon,
@@ -99,6 +103,7 @@ Yagataramon,Perfect,False,Official Digimon,
 Xingtianmon,Perfect,False,Official Digimon,
 Angewomon X,Perfect,True,Official Digimon,X-Antibody
 Baalmon X,Perfect,True,Official Digimon,X-Antibody
+LadyDevimon X,Perfect,False,Official Digimon,X-Antibody
 MetalGreymon X,Perfect,True,Official Digimon,X-Antibody
 MetalGreymon X Antibody Virus,Perfect,True,Official Digimon,X-Antibody
 MetalTyrannomon X,Perfect,True,Official Digimon,X-Antibody
