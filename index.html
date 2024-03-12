@@ -213,7 +213,9 @@ user-select: none;
     flex-direction: column; 
 
 }
-
+h2 {
+    margin-top:16px;
+}
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -254,6 +256,7 @@ window.onload = function() {
 
             csvData.forEach(row => {
                 let cols = row.split(',');
+                if (cols.length < 6 || cols[5].trim().toLowerCase() === 'true') return;
 
                 // Skip if row is not valid
                 if (cols.length < 4) return;
