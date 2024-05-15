@@ -1,0 +1,307 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-image: url(images/background.png);
+    background-size: cover;
+    height:100%;
+}
+.logo{
+    max-width: 50%;
+    width:320px;
+    transition: transform 0.3s ease;
+
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+@font-face {
+    font-family: 'Cordel Groteska';
+    src: url('data/CordelGroteska.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* width */
+::-webkit-scrollbar {
+    height:80%;
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: none; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    width: 8px;
+  border-left: 1.5px solid transparent;
+
+    background: rgba(0, 0, 0, 0.2); 
+    right: 20px;
+border-radius: 8px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5); 
+  }
+
+h2{
+    text-align: center;
+    font-family: 'Cordel Groteska', sans-serif;
+    color:white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 4px 4px #000000,2px 2px #000000, 3px 3px #000000;
+}
+.description{
+    margin-top: 32px!important;
+    width:80%;
+    margin: auto;
+    padding:20px;
+    background-color: rgba(255, 255, 255, 0.3); /* Fundo semi-transparente */
+    border-radius: 24px;
+}
+.description h3{
+    line-height: 1em;
+    margin: 0 0 1em 0;
+}
+.description p{
+    margin: 0;
+}
+h3{
+    text-align: center;
+    font-family: 'Cordel Groteska', sans-serif;
+    color:white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 4px 4px #000000,2px 2px #000000, 3px 3px #000000;
+
+}
+.stage-section {
+    margin-bottom: 20px;
+}
+.digimon-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebra de linha se necessário */
+    justify-content: center; /* Alinha os cards no centro */
+}
+
+#digimon-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.digimon-card {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin: 5px;
+    transition: transform 0.3s ease;
+}
+
+.digimon-card img {
+    width: 160px;
+    height: 160px;
+    transition: transform 0.3s ease;
+}
+.digimon-card h3{
+    margin:0;
+}
+.digimon-card:hover {
+    transform: scale(1.1);
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#overlay.hidden {
+    display: none;
+}
+
+#digimon-details {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 640px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    max-height: 80vh;
+    overflow-y: auto; /* Permite rolagem vertical */
+    position: relative; /* Necessário para que o botão seja posicionado corretamente */
+    max-width: 85vw!important;
+}
+#digimon-details h2 {
+    line-height: 1em;
+    font-size: 2em!important;
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+#digimon-details h3 {
+    color: #000;
+    font-family: 'Arial', sans-serif;
+    text-shadow: none;
+}
+
+#digimon-details.rookie {
+    background-color: #ffcb00;
+}
+
+#digimon-details.champion {
+    background-color: #28db43;
+}
+#digimon-details img {
+    width: 240px;
+    height: 240px;
+    background-image: url(/images/SYMBOL.png);
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container{
+    position: relative;
+}
+.container button {
+
+    position: absolute; /* Permite posicionamento fora da div pai */
+    top: -15px; /* Ajuste para posicionar meio para fora */
+    left: -15px; /* Ajuste para posicionar meio para fora */
+    cursor: pointer;
+    background-color: red; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Remove borda padrão */
+    border-radius: 50%; /* Torna o botão redondo */
+    width: 30px; /* Largura do botão */
+    height: 30px; /* Altura do botão */
+    font-size: 1.2em; /* Tamanho do texto */
+    line-height: 0; /* Remove altura da linha para centralizar */
+    padding: 0; /* Remove padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adiciona sombra para destaque */
+    z-index: 10; /* Garante que o botão fique acima do contêiner */
+}
+
+
+
+
+.evolution {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 20px; /* Adiciona espaçamento de 10px entre as divs */
+
+}
+
+.evolution div {
+    flex: 2;
+    text-align: left;
+}
+.evolution-card {
+    display: flex; /* Torna o contêiner flexível */
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    cursor: pointer;
+    padding: 10px 10px;
+    background-color: rgba(255, 255, 255, 0.3); /* Fundo semi-transparente */
+    border-radius: 5px;
+    margin: 10px 0px 10px 0px;
+    transition: transform 0.3s ease; /* Adiciona a transição */
+}
+
+.evolution-card:hover {
+    display: flex; /* Torna o contêiner flexível */
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.6); /* Fundo semi-transparente */
+    transform: scale(1.1); /* Adiciona a transformação */
+}
+.evolution-card img {
+    max-width: 64px!important;
+    max-height: 64px!important;
+    margin-right: 10px; /* Espaço entre a imagem e o nome */
+    width: auto!important;
+    height: auto!important;
+    background: none!important;
+}
+
+.evolution-card p {
+    margin: 0; /* Remove a margem padrão do parágrafo */
+}
+.variations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+    gap: 10px;
+}
+
+.variation-card {
+    display: flex;
+    flex-direction: column; /* Exibe a imagem e o nome em coluna */
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.3); /* Fundo semi-transparente */
+    border-radius: 5px;
+    transition: transform 0.3s ease; /* Adiciona a transição */
+}
+
+.variation-card:hover {
+    background-color: rgba(255, 255, 255, 0.6); /* Fundo semi-transparente */
+    transform: scale(1.1); /* Adiciona a transformação */
+}
+.variation-card img {
+    max-width: 64px!important;
+    max-height: 64px!important;
+    margin-bottom: 10px; /* Espaço entre a imagem e o nome */
+    width: auto!important;
+    height: auto!important;
+    background: none!important;
+
+}
+
+
+.link {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Estilos específicos para cada estágio */
+.digimon-card.rookie {
+}
+.digimon-card.rookie img {
+    padding: 10px;
+    background-image: url(/data/bg-rookie.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.digimon-card.rookie img {
+    padding: 10px;
+    background-image: url(/data/bg-rookie.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.digimon-card.rookie img {
+    padding: 10px;
+    background-image: url(/data/bg-rookie.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
