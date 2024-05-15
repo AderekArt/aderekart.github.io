@@ -290,17 +290,17 @@ h3{
     background-position: bottom center;
 }
 
-.digimon-card.rookie img {
+.digimon-card.champion img {
     padding: 10px;
-    background-image: url(./data/bg-rookie.svg);
+    background-image: url(./data/bg-champion.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom center;
 }
 
-.digimon-card.rookie img {
+.digimon-card.perfect img {
     padding: 10px;
-    background-image: url(./data/bg-rookie.svg);
+    background-image: url(./data/bg-perfect.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom center;
