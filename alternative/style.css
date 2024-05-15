@@ -6,81 +6,103 @@ body {
     padding: 20px;
     background-image: url(images/background.png);
     background-size: cover;
-    height:100%;
+    height: 100%;
+    
 }
-.logo{
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  
+  }
+  
+.logo {
     max-width: 50%;
-    width:320px;
+    width: 320px;
     transition: transform 0.3s ease;
-
 }
 
 .logo:hover {
     transform: scale(1.1);
 }
+
 @font-face {
     font-family: 'Cordel Groteska';
     src: url('data/CordelGroteska.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
+
 /* width */
 ::-webkit-scrollbar {
-    height:80%;
+    height: 80%;
     width: 8px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: none; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    width: 8px;
-  border-left: 1.5px solid transparent;
+}
 
-    background: rgba(0, 0, 0, 0.2); 
+/* Track */
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    width: 8px;
+    border-left: 1.5px solid transparent;
+    background: rgba(0, 0, 0, 0.2);
     right: 20px;
-border-radius: 8px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.5); 
-  }
+    border-radius: 8px;
+}
 
-h2{
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+h2 {
     text-align: center;
     font-family: 'Cordel Groteska', sans-serif;
-    color:white;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 4px 4px #000000,2px 2px #000000, 3px 3px #000000;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 4px 4px #000000, 2px 2px #000000, 3px 3px #000000;
 }
-.description{
-    margin-top: 32px!important;
-    width:80%;
+
+
+#profile {
+    margin-top: 32px !important;
+    width: 80%;
     margin: auto;
-    padding:20px;
-    background-color: rgba(255, 255, 255, 0.3); /* Fundo semi-transparente */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.3); /* Fundo semi-transparente */
     border-radius: 24px;
 }
-.description h3{
+
+
+#profile h3 {
     line-height: 1em;
     margin: 0 0 1em 0;
 }
-.description p{
+
+#profile p {
     margin: 0;
 }
-h3{
+
+h3 {
     text-align: center;
     font-family: 'Cordel Groteska', sans-serif;
-    color:white;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 4px 4px #000000,2px 2px #000000, 3px 3px #000000;
-
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 4px 4px #000000, 2px 2px #000000, 3px 3px #000000;
 }
+
 .stage-section {
     margin-bottom: 20px;
 }
+
 .digimon-cards-container {
     display: flex;
     flex-wrap: wrap; /* Permite quebra de linha se necessário */
@@ -103,12 +125,14 @@ h3{
 
 .digimon-card img {
     width: 160px;
-    height: 160px;
+    height: auto !important;
     transition: transform 0.3s ease;
 }
-.digimon-card h3{
-    margin:0;
+
+.digimon-card h3 {
+    margin: 0;
 }
+
 .digimon-card:hover {
     transform: scale(1.1);
 }
@@ -119,7 +143,7 @@ h3{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,11 +164,12 @@ h3{
     max-height: 80vh;
     overflow-y: auto; /* Permite rolagem vertical */
     position: relative; /* Necessário para que o botão seja posicionado corretamente */
-    max-width: 85vw!important;
+    max-width: 85vw !important;
 }
+
 #digimon-details h2 {
     line-height: 1em;
-    font-size: 2em!important;
+    font-size: 2em !important;
     display: block;
     font-size: 1.5em;
     margin-block-start: 0em;
@@ -153,6 +178,7 @@ h3{
     margin-inline-end: 0px;
     font-weight: bold;
 }
+
 #digimon-details h3 {
     color: #000;
     font-family: 'Arial', sans-serif;
@@ -166,6 +192,7 @@ h3{
 #digimon-details.champion {
     background-color: #28db43;
 }
+
 #digimon-details img {
     width: 240px;
     height: 240px;
@@ -175,11 +202,11 @@ h3{
     background-repeat: no-repeat;
 }
 
-.container{
+.container {
     position: relative;
 }
-.container button {
 
+.container button {
     position: absolute; /* Permite posicionamento fora da div pai */
     top: -15px; /* Ajuste para posicionar meio para fora */
     left: -15px; /* Ajuste para posicionar meio para fora */
@@ -197,21 +224,18 @@ h3{
     z-index: 10; /* Garante que o botão fique acima do contêiner */
 }
 
-
-
-
 .evolution {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
     gap: 20px; /* Adiciona espaçamento de 10px entre as divs */
-
 }
 
 .evolution div {
     flex: 2;
     text-align: left;
 }
+
 .evolution-card {
     display: flex; /* Torna o contêiner flexível */
     align-items: center; /* Centraliza verticalmente o conteúdo */
@@ -224,24 +248,23 @@ h3{
 }
 
 .evolution-card:hover {
-    display: flex; /* Torna o contêiner flexível */
-    align-items: center; /* Centraliza verticalmente o conteúdo */
-    cursor: pointer;
     background-color: rgba(255, 255, 255, 0.6); /* Fundo semi-transparente */
     transform: scale(1.1); /* Adiciona a transformação */
 }
+
 .evolution-card img {
-    max-width: 64px!important;
-    max-height: 64px!important;
+    max-width: 64px !important;
+    max-height: 64px !important;
     margin-right: 10px; /* Espaço entre a imagem e o nome */
-    width: auto!important;
-    height: auto!important;
-    background: none!important;
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
 }
 
 .evolution-card p {
     margin: 0; /* Remove a margem padrão do parágrafo */
 }
+
 .variations {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
@@ -263,16 +286,15 @@ h3{
     background-color: rgba(255, 255, 255, 0.6); /* Fundo semi-transparente */
     transform: scale(1.1); /* Adiciona a transformação */
 }
+
 .variation-card img {
-    max-width: 64px!important;
-    max-height: 64px!important;
+    max-width: 64px !important;
+    max-height: 64px !important;
     margin-bottom: 10px; /* Espaço entre a imagem e o nome */
-    width: auto!important;
-    height: auto!important;
-    background: none!important;
-
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
 }
-
 
 .link {
     text-decoration: underline;
@@ -280,8 +302,6 @@ h3{
 }
 
 /* Estilos específicos para cada estágio */
-.digimon-card.rookie {
-}
 .digimon-card.rookie img {
     padding: 10px;
     background-image: url(./data/bg-rookie.svg);
@@ -304,4 +324,66 @@ h3{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom center;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(150%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(150%);
+    }
+}
+
+.container {
+    animation: slideUp 0.5s forwards; /* Animação de subida ao aparecer */
+}
+
+.container.closing {
+    animation: slideDown 0.5s forwards; /* Animação de descida ao fechar */
+}
+
+@keyframes overlayslideUp {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+@keyframes overlayslideDown {
+    from {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: overlayslideUp 0.5s forwards; /* Animação de subida ao aparecer */
+}
+
+#overlay.closing {
+    animation: overlayslideDown 0.5s forwards; /* Animação de descida ao fechar */
 }
