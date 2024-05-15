@@ -169,7 +169,7 @@ h3{
 #digimon-details img {
     width: 240px;
     height: 240px;
-    background-image: url(/images/SYMBOL.png);
+    background-image: url(./images/SYMBOL.png);
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
