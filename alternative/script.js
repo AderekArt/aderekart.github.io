@@ -1,47 +1,69 @@
 document.addEventListener('DOMContentLoaded', function() {
     d3.csv('data/digimons.csv').then(function(data) {
-        // Agrupa os Digimons por fase
-        const stages = {};
-        data.forEach(digimon => {
-            if (!stages[digimon.Stage]) {
-                stages[digimon.Stage] = [];
-            }
-            stages[digimon.Stage].push(digimon);
-        });
-
         const digimonList = document.getElementById('digimon-list');
         const overlay = document.getElementById('overlay');
         const digimonDetails = document.getElementById('digimon-details');
         const container = document.querySelector('.container');
+        const searchBar = document.getElementById('search-bar');
 
-        // Cria seções para cada fase
-        for (const stage in stages) {
-            if (stages.hasOwnProperty(stage)) {
-                const stageSection = document.createElement('div');
-                stageSection.className = 'stage-section';
+        // Função para exibir a lista de Digimons
+        function displayDigimons(digimons) {
+            digimonList.innerHTML = '';
+            const stages = {};
 
-                const stageHeader = document.createElement('h2');
-                stageHeader.textContent = stage;
-                stageSection.appendChild(stageHeader);
+            digimons.forEach(digimon => {
+                if (!stages[digimon.Stage]) {
+                    stages[digimon.Stage] = [];
+                }
+                stages[digimon.Stage].push(digimon);
+            });
 
-                const cardsContainer = document.createElement('div');
-                cardsContainer.className = 'digimon-cards-container';
-                stageSection.appendChild(cardsContainer);
+            for (const stage in stages) {
+                if (stages.hasOwnProperty(stage)) {
+                    const stageSection = document.createElement('div');
+                    stageSection.className = 'stage-section';
 
-                stages[stage].forEach(digimon => {
-                    const card = document.createElement('div');
-                    card.className = `digimon-card ${digimon.Stage.toLowerCase()}`;
-                    card.innerHTML = `
-                        <img src="images/${digimon.Name}.png" alt="${digimon.Name}">
-                        <h3>${digimon.Name}</h3>
-                    `;
-                    card.addEventListener('click', () => showDetails(digimon));
-                    cardsContainer.appendChild(card);
-                });
+                    const stageHeader = document.createElement('h2');
+                    stageHeader.textContent = stage;
+                    stageSection.appendChild(stageHeader);
 
-                digimonList.appendChild(stageSection);
+                    const cardsContainer = document.createElement('div');
+                    cardsContainer.className = 'digimon-cards-container';
+                    stageSection.appendChild(cardsContainer);
+
+                    stages[stage].forEach(digimon => {
+                        const card = document.createElement('div');
+                        card.className = `digimon-card ${digimon.Stage.toLowerCase()}`;
+                        card.innerHTML = `
+                            <img src="images/${digimon.Name}.png" alt="${digimon.Name}">
+                            <h3>${digimon.Name}</h3>
+                        `;
+                        card.addEventListener('click', () => showDetails(digimon));
+                        cardsContainer.appendChild(card);
+                    });
+
+                    digimonList.appendChild(stageSection);
+                }
             }
         }
+
+        // Função para filtrar os Digimons
+        function filterDigimons(query) {
+            const filtered = data.filter(digimon => {
+                return Object.values(digimon).some(value => 
+                    value.toLowerCase().includes(query.toLowerCase())
+                );
+            });
+            displayDigimons(filtered);
+        }
+
+        // Evento de input na barra de pesquisa
+        searchBar.addEventListener('input', function() {
+            const query = searchBar.value;
+            filterDigimons(query);
+        });
+
+        displayDigimons(data);
 
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) {
@@ -50,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         function showDetails(digimon) {
-            // Adiciona animação de fechamento se já estiver aberto
             if (!overlay.classList.contains('hidden')) {
                 container.classList.add('closing');
                 overlay.classList.add('closing');
@@ -68,11 +89,10 @@ document.addEventListener('DOMContentLoaded', function() {
         function displayDetails(digimon) {
             overlay.classList.remove('hidden');
             container.classList.remove('hidden');
-            document.body.classList.add('no-scroll'); // Bloqueia o scroll no body
-            digimonDetails.className = ''; // Resetar classes anteriores
-            digimonDetails.classList.add(digimon.Stage.toLowerCase()); // Adicionar a nova classe de estágio
+            document.body.classList.add('no-scroll');
+            digimonDetails.className = '';
+            digimonDetails.classList.add(digimon.Stage.toLowerCase());
 
-            // Atualiza o hash na URL
             window.location.hash = digimon.Name;
 
             const evolveFromHTML = parseEvolution(digimon['Evolve From']);
@@ -98,12 +118,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="evolution">
                     ${evolveFromHTML !== '<p>None</p>' ? `
                     <div class="evolve-from">
-                        <h3>Evolve From</h3>
+                        <h3>Evolves From</h3>
                         ${evolveFromHTML}
                     </div>` : ''}
                     ${evolveToHTML !== '<p>None</p>' ? `
                     <div class="evolve-to">
-                        <h3>Evolve To</h3>
+                        <h3>Evolves To</h3>
                         ${evolveToHTML}
                     </div>` : ''}
                 </div>`;
@@ -116,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         ${variationsHTML}
                     </div>
                 `;
-            }
+            } 
             addLinkHandlers();
         }
 
@@ -159,26 +179,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         window.closeDetails = function() {
-            container.classList.add('closing'); // Adiciona a classe closing para a animação de descida
+            container.classList.add('closing');
             overlay.classList.add('closing');
-            document.body.classList.remove('no-scroll'); // Desbloqueia o scroll no body
-            window.location.hash = ''; // Remove o hash da URL ao fechar o popup
+            document.body.classList.remove('no-scroll');
+            window.location.hash = '';
 
-            // Espera a animação de fechamento concluir antes de realmente esconder o contêiner
             container.addEventListener('animationend', function() {
-                container.classList.add('hidden'); // Adiciona a classe hidden após a animação
-                container.classList.remove('closing'); // Remove a classe closing após a animação
+                container.classList.add('hidden');
+                container.classList.remove('closing');
             }, { once: true });
 
             overlay.addEventListener('animationend', function() {
-                overlay.classList.add('hidden'); // Adiciona a classe hidden após a animação
-                overlay.classList.remove('closing'); // Remove a classe closing após a animação
+                overlay.classList.add('hidden');
+                overlay.classList.remove('closing');
             }, { once: true });
         }
 
-        // Verifica o hash na URL ao carregar a página
         if (window.location.hash) {
-            const digimonName = window.location.hash.substring(1); // Remove o '#' do início
+            const digimonName = window.location.hash.substring(1);
             const digimon = data.find(d => d.Name.toLowerCase() === digimonName.toLowerCase());
             if (digimon) {
                 showDetails(digimon);
