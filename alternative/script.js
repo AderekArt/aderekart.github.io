@@ -78,42 +78,53 @@ document.addEventListener('DOMContentLoaded', function() {
             const evolveFromHTML = parseEvolution(digimon['Evolve From']);
             const evolveToHTML = parseEvolution(digimon['Evolve To']);
             const variationsHTML = parseVariations(digimon['Alternative']);
-
             digimonDetails.innerHTML = `
                 <button onclick="closeDetails()">X</button>
                 <h2>${digimon.Name}</h2>
                 <div class="digimon-info">
-                    <h3>${digimon.Stage} - ${digimon.Attribute} -  ${digimon.Type}</h3>
+                    <h3>${digimon.Stage} - ${digimon.Attribute} - ${digimon.Type}</h3>
                 </div>
                 <img src="images/${digimon.Name}.png" alt="${digimon.Name}">
                 <p style="line-height: 2em;">
-                <img style="height: 2em; width: auto; background: none; vertical-align: middle;" src="https://visualpharm.com/assets/652/Pen-595b40b75ba036ed117d9a7d.svg" alt="Author Image">
-                <b>${digimon.Author}</b>
-            </p>
-                            <h3>Profile</h3>
-                <p>${digimon.Description}</p> </div>
+                    <img style="height: 2em; width: auto; background: none; vertical-align: middle;" src="https://visualpharm.com/assets/652/Pen-595b40b75ba036ed117d9a7d.svg" alt="Author Image">
+                    <b>${digimon.Author}</b>
+                </p>
+                <h3>Profile</h3>
+                <p>${digimon.Description}</p>
+            `;
+
+            if (evolveFromHTML !== '<p>None</p>' || evolveToHTML !== '<p>None</p>') {
+                digimonDetails.innerHTML += `
                 <div class="evolution">
+                    ${evolveFromHTML !== '<p>None</p>' ? `
                     <div class="evolve-from">
                         <h3>Evolve From</h3>
                         ${evolveFromHTML}
-                    </div>
+                    </div>` : ''}
+                    ${evolveToHTML !== '<p>None</p>' ? `
                     <div class="evolve-to">
                         <h3>Evolve To</h3>
                         ${evolveToHTML}
-                    </div>
-                </div>
-                <h3>Subspecies/Variations</h3>
-                <div class="variations">
-                    ${variationsHTML}
-                </div>
-            `;
+                    </div>` : ''}
+                </div>`;
+            }
 
+            if (variationsHTML !== '<p>None</p>') {
+                digimonDetails.innerHTML += `
+                    <h3>Subspecies/Variations</h3>
+                    <div class="variations">
+                        ${variationsHTML}
+                    </div>
+                `;
+            }
             addLinkHandlers();
         }
 
         function parseEvolution(evolution) {
             if (!evolution) return '<p>None</p>';
-            return evolution.split(',').map(name => name.trim()).filter(Boolean).map(name => {
+            const evolutions = evolution.split(',').map(name => name.trim()).filter(Boolean);
+            if (evolutions.length === 0) return '<p>None</p>';
+            return evolutions.map(name => {
                 const digimon = data.find(d => d.Name === name);
                 return `<div class="evolution-card" data-name="${name}">
                             <img src="images/${name}.png" alt="${name}">
@@ -124,7 +135,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function parseVariations(variations) {
             if (!variations) return '<p>None</p>';
-            return variations.split(',').map(name => name.trim()).filter(Boolean).map(name => {
+            const variationList = variations.split(',').map(name => name.trim()).filter(Boolean);
+            if (variationList.length === 0) return '<p>None</p>';
+            return variationList.map(name => {
                 const digimon = data.find(d => d.Name === name);
                 return `<div class="variation-card" data-name="${name}">
                             <img src="images/${name}.png" alt="${name}">

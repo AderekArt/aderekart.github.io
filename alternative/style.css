@@ -184,6 +184,12 @@ h3 {
     font-family: 'Arial', sans-serif;
     text-shadow: none;
 }
+#digimon-details.baby {
+    background-color: #dd376f;
+}
+#digimon-details.in-training {
+    background-color: #dd376f;
+}
 
 #digimon-details.rookie {
     background-color: #ffcb00;
@@ -191,6 +197,9 @@ h3 {
 
 #digimon-details.champion {
     background-color: #28db43;
+}
+#digimon-details.perfect {
+    background-color: #08c8f9;
 }
 
 #digimon-details img {
@@ -220,7 +229,6 @@ h3 {
     font-size: 1.2em; /* Tamanho do texto */
     line-height: 0; /* Remove altura da linha para centralizar */
     padding: 0; /* Remove padding */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adiciona sombra para destaque */
     z-index: 10; /* Garante que o botão fique acima do contêiner */
 }
 
@@ -300,8 +308,22 @@ h3 {
     text-decoration: underline;
     cursor: pointer;
 }
+.digimon-card.baby img {
+    padding: 10px;
+    background-image: url(./data/bg-baby.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
 
-/* Estilos específicos para cada estágio */
+.digimon-card.in-training img {
+    padding: 10px;
+    background-image: url(./data/bg-baby.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
 .digimon-card.rookie img {
     padding: 10px;
     background-image: url(./data/bg-rookie.svg);
