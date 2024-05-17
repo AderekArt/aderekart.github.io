@@ -177,7 +177,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         const authorProfiles = {
             'Aderek': 'https://x.com/AderekArt',
-            'Emiluna': 'https://twitter.com/Ochistrikitu'
+            'Emiluna': 'https://twitter.com/Ochistrikitu',
+            'Thais Inoue': 'https://x.com/Thaino_Noronha',
+
         };
         
         
