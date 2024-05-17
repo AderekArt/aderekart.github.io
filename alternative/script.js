@@ -156,14 +156,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         function showDetails(digimon) {
-            lastScrollPosition = window.scrollY;  // Save the current scroll position
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${lastScrollPosition}px`;
-
+            if (overlay.classList.contains('hidden')) {
+                lastScrollPosition = window.scrollY;  // Save the current scroll position
+                document.body.style.position = 'fixed';
+                document.body.style.top = `-${lastScrollPosition}px`;
+            }
+        
             if (!overlay.classList.contains('hidden')) {
                 container.classList.add('closing');
                 overlay.classList.add('closing');
-
+        
                 container.addEventListener('animationend', function() {
                     overlay.classList.remove('closing');
                     container.classList.remove('closing');
@@ -173,18 +175,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 displayDetails(digimon);
             }
         }
-
+        const authorProfiles = {
+            'Aderek': 'https://x.com/AderekArt',
+            'Emiluna': 'https://twitter.com/Ochistrikitu'
+        };
+        
+        
         function displayDetails(digimon) {
             overlay.classList.remove('hidden');
             container.classList.remove('hidden');
             digimonDetails.className = '';
             digimonDetails.classList.add(digimon.Stage.toLowerCase());
-
+        
             window.location.hash = digimon.Name;
-
+        
             const evolveFromHTML = parseEvolution(digimon['Evolve From']);
             const evolveToHTML = parseEvolution(digimon['Evolve To']);
             const variationsHTML = parseVariations(digimon['Alternative']);
+        
+            let authorLink;
+            if (authorProfiles[digimon.Author]) {
+                const authorProfile = authorProfiles[digimon.Author];
+                authorLink = `<a href="${authorProfile}" target="_blank">
+                                <img style="height: 2em; width: auto; background: none; vertical-align: middle;" src="https://visualpharm.com/assets/652/Pen-595b40b75ba036ed117d9a7d.svg" alt="Author Image">
+                                ${digimon.Author}
+                              </a>`;
+            } else {
+                authorLink = `<img style="height: 2em; width: auto; background: none; vertical-align: middle;" src="https://visualpharm.com/assets/652/Pen-595b40b75ba036ed117d9a7d.svg" alt="Author Image">
+                              ${digimon.Author}`;
+            }
+        
+        
             digimonDetails.innerHTML = `
                 <button onclick="closeDetails()">X</button>
                 <h2>${digimon.Name}</h2>
@@ -193,15 +214,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <img src="images/${digimon.Name}.png" alt="${digimon.Name}">
                 <p style="line-height: 2em;">
-                    <img style="height: 2em; width: auto; background: none; vertical-align: middle;" src="https://visualpharm.com/assets/652/Pen-595b40b75ba036ed117d9a7d.svg" alt="Author Image">
-                    <b>${digimon.Author}</b>
+                    <b>${authorLink}</b>
                 </p>
                 <div class="profile">
-                <h3>Profile</h3>
-                <p>${digimon.Description}</p>
+                    <h3>Profile</h3>
+                    <p>${digimon.Description}</p>
                 </div>
             `;
+        
 
+        
+        
             if (evolveFromHTML !== '<p>None</p>' || evolveToHTML !== '<p>None</p>') {
                 digimonDetails.innerHTML += `
                 <div class="evolution">
@@ -217,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>` : ''}
                 </div>`;
             }
-
+        
             if (variationsHTML !== '<p>None</p>') {
                 digimonDetails.innerHTML += `
                     <h3>Subspecies/Variations</h3>
@@ -228,7 +251,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             addLinkHandlers();
         }
-
+        
+        
         function parseEvolution(evolution) {
             if (!evolution) return '<p>None</p>';
             const evolutions = evolution.split(',').map(name => name.trim()).filter(Boolean);
@@ -282,86 +306,32 @@ document.addEventListener('DOMContentLoaded', function() {
                     const digimonName = element.getAttribute('data-name');
                     const digimon = data.find(d => d.Name === digimonName);
                     if (digimon) {
-                        updateDetails(digimon);
+                        showDetails(digimon);
                     }
                 });
             });
         }
-
-        function updateDetails(digimon) {
-            digimonDetails.className = '';
-            digimonDetails.classList.add(digimon.Stage.toLowerCase());
-
-            window.location.hash = digimon.Name;
-
-            const evolveFromHTML = parseEvolution(digimon['Evolve From']);
-            const evolveToHTML = parseEvolution(digimon['Evolve To']);
-            const variationsHTML = parseVariations(digimon['Alternative']);
-            digimonDetails.innerHTML = `
-                <button onclick="closeDetails()">X</button>
-                <h2>${digimon.Name}</h2>
-                <div class="digimon-info">
-                    <h3>${digimon.Stage} - ${digimon.Attribute} - ${digimon.Type}</h3>
-                </div>
-                <img src="images/${digimon.Name}.png" alt="${digimon.Name}">
-                <p style="line-height: 2em;">
-                    <img style="height: 2em; width: auto; background: none; vertical-align: middle;" src="https://visualpharm.com/assets/652/Pen-595b40b75ba036ed117d9a7d.svg" alt="Author Image">
-                    <b>${digimon.Author}</b>
-                </p>
-                <div class="profile">
-                <h3>Profile</h3>
-                <p>${digimon.Description}</p>
-                </div>
-            `;
-
-            if (evolveFromHTML !== '<p>None</p>' || evolveToHTML !== '<p>None</p>') {
-                digimonDetails.innerHTML += `
-                <div class="evolution">
-                    ${evolveFromHTML !== '<p>None</p>' ? `
-                    <div class="evolve-from">
-                        <h3>Evolves From</h3>
-                        ${evolveFromHTML}
-                    </div>` : ''}
-                    ${evolveToHTML !== '<p>None</p>' ? `
-                    <div class="evolve-to">
-                        <h3>Evolves To</h3>
-                        ${evolveToHTML}
-                    </div>` : ''}
-                </div>`;
-            }
-
-            if (variationsHTML !== '<p>None</p>') {
-                digimonDetails.innerHTML += `
-                    <h3>Subspecies/Variations</h3>
-                    <div class="variations">
-                        ${variationsHTML}
-                    </div>
-                `;
-            }
-            addLinkHandlers();
-        }
-
         window.closeDetails = function() {
             container.classList.add('closing');
             overlay.classList.add('closing');
             window.location.hash = '';
-
+        
             container.addEventListener('animationend', function() {
                 container.classList.add('hidden');
                 container.classList.remove('closing');
             }, { once: true });
-
+        
             overlay.addEventListener('animationend', function() {
                 overlay.classList.add('hidden');
                 overlay.classList.remove('closing');
                 const scrollY = document.body.style.top;
                 document.body.style.position = '';
                 document.body.style.top = '';
-
                 window.scrollTo(0, parseInt(scrollY || '0') * -1);  // Restore the scroll position
             }, { once: true });
         }
-
+        
+        
         if (window.location.hash) {
             const digimonName = window.location.hash.substring(1);
             const digimon = data.find(d => d.Name.toLowerCase() === digimonName.toLowerCase());
