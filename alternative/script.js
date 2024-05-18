@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-
     d3.csv('data/digimons.csv').then(function(data) {
         const digimonList = document.getElementById('digimon-list');
         const overlay = document.getElementById('overlay');
@@ -177,14 +176,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 displayDetails(digimon);
             }
         }
+
         const authorProfiles = {
             'Aderek': 'https://x.com/AderekArt',
             'Emiluna': 'https://twitter.com/Ochistrikitu',
             'Thais Inoue': 'https://x.com/Thaino_Noronha',
-
         };
-        
-        
+
         function displayDetails(digimon) {
             overlay.classList.remove('hidden');
             container.classList.remove('hidden');
@@ -209,8 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 authorLink = `<img style="height: 2em; width: auto; background: none; vertical-align: middle;" src="https://visualpharm.com/assets/652/Pen-595b40b75ba036ed117d9a7d.svg" alt="Author Image">
                               ${digimon.Author}`;
             }
-        
-        
+
             digimonDetails.innerHTML = `
                 <button onclick="closeDetails()">X</button>
                 <h2>${digimon.Name}</h2>
@@ -226,21 +223,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p>${digimon.Description}</p>
                 </div>
                 ${galleryHTML}
-
             `;
         
-
-        
-        
-            if (evolveFromHTML !== '<p>None</p>' || evolveToHTML !== '<p>None</p>') {
+            if (evolveFromHTML !== '' || evolveToHTML !== '') {
                 digimonDetails.innerHTML += `
                 <div class="evolution">
-                    ${evolveFromHTML !== '<p>None</p>' ? `
+                    ${evolveFromHTML !== '' ? `
                     <div class="evolve-from">
                         <h3>Evolves From</h3>
                         ${evolveFromHTML}
                     </div>` : ''}
-                    ${evolveToHTML !== '<p>None</p>' ? `
+                    ${evolveToHTML !== '' ? `
                     <div class="evolve-to">
                         <h3>Evolves To</h3>
                         ${evolveToHTML}
@@ -248,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>`;
             }
         
-            if (variationsHTML !== '<p>None</p>') {
+            if (variationsHTML !== '') {
                 digimonDetails.innerHTML += `
                     <h3>Subspecies/Variations</h3>
                     <div class="variations">
@@ -258,12 +251,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             addLinkHandlers();
         }
-        
-        
+
         function parseEvolution(evolution) {
-            if (!evolution) return '<p>None</p>';
+            if (!evolution) return '';
             const evolutions = evolution.split(',').map(name => name.trim()).filter(Boolean);
-            if (evolutions.length === 0) return '<p>None</p>';
+            if (evolutions.length === 0) return '';
             return evolutions.map(name => {
                 const match = name.match(/^([^\[]+)(?:\s*\[(.+)\])?$/);
                 const digimonName = match ? match[1].trim() : name;
@@ -284,9 +276,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function parseVariations(variations) {
-            if (!variations) return '<p>None</p>';
+            if (!variations) return '';
             const variationList = variations.split(',').map(name => name.trim()).filter(Boolean);
-            if (variationList.length === 0) return '<p>None</p>';
+            if (variationList.length === 0) return '';
             return variationList.map(name => {
                 const match = name.match(/^([^\[]+)(?:\s*\[(.+)\])?$/);
                 const digimonName = match ? match[1].trim() : name;
@@ -305,6 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return ''; // Return empty string if digimon not found or hidden
             }).join('');
         }
+
         function parseGallery(gallery) {
             if (!gallery) return '';
             const images = gallery.split(',').map(item => {
@@ -315,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const description = artist ? `Art by: ${artist}` : '';
                 return { imageUrl, artistLink, description };
             });
-        
+
             return `
                 <div class="gallery">
                     <h3>Gallery</h3>
@@ -332,7 +325,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         }
-        
 
         function addLinkHandlers() {
             document.querySelectorAll('.evolution-card, .variation-card').forEach(element => {
@@ -346,6 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         }
+
         window.closeDetails = function() {
             container.classList.add('closing');
             overlay.classList.add('closing');
@@ -365,8 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.scrollTo(0, parseInt(scrollY || '0') * -1);  // Restore the scroll position
             }, { once: true });
         }
-        
-        
+
         if (window.location.hash) {
             const digimonName = window.location.hash.substring(1).replace(/_/g, ' ');
             const digimon = data.find(d => d.Name.toLowerCase() === digimonName.toLowerCase());
@@ -378,7 +370,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error loading the CSV file:', error);
     });
 
-    
 });
 
 window.addEventListener('scroll', function() {
@@ -390,4 +381,3 @@ window.addEventListener('scroll', function() {
         navbar.classList.remove('scrolled');
     }
 });
-
