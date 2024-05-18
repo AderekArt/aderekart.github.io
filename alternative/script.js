@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+
     d3.csv('data/digimons.csv').then(function(data) {
         const digimonList = document.getElementById('digimon-list');
         const overlay = document.getElementById('overlay');
@@ -189,12 +191,13 @@ document.addEventListener('DOMContentLoaded', function() {
             digimonDetails.className = '';
             digimonDetails.classList.add(digimon.Stage.toLowerCase());
         
-            window.location.hash = digimon.Name;
+            window.location.hash = digimon.Name.replace(/ /g, '_');
         
             const evolveFromHTML = parseEvolution(digimon['Evolve From']);
             const evolveToHTML = parseEvolution(digimon['Evolve To']);
             const variationsHTML = parseVariations(digimon['Alternative']);
-        
+            const galleryHTML = parseGallery(digimon['Gallery']);
+
             let authorLink;
             if (authorProfiles[digimon.Author]) {
                 const authorProfile = authorProfiles[digimon.Author];
@@ -222,6 +225,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3>Profile</h3>
                     <p>${digimon.Description}</p>
                 </div>
+                ${galleryHTML}
+
             `;
         
 
@@ -300,6 +305,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 return ''; // Return empty string if digimon not found or hidden
             }).join('');
         }
+        function parseGallery(gallery) {
+            if (!gallery) return '';
+            const images = gallery.split(',').map(item => {
+                const match = item.match(/^(.+)\s\[Art by:(.+?);\s*(https?:\/\/[^\]]+)\]$/);
+                const imageUrl = match ? match[1].trim() : item.trim();
+                const artist = match ? match[2].trim() : '';
+                const artistLink = match ? match[3].trim() : '';
+                const description = artist ? `Art by: ${artist}` : '';
+                return { imageUrl, artistLink, description };
+            });
+        
+            return `
+                <div class="gallery">
+                    <h3>Gallery</h3>
+                    <div class="gallery-container">
+                        ${images.map(image => `
+                            <a href="${image.artistLink}" target="_blank" class="gallery-item-link">
+                                <div class="gallery-item">
+                                    <img src="./images/${image.imageUrl}">
+                                    <div class="gallery-desc">${image.description}</div>
+                                </div>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
 
         function addLinkHandlers() {
             document.querySelectorAll('.evolution-card, .variation-card').forEach(element => {
@@ -335,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         
         if (window.location.hash) {
-            const digimonName = window.location.hash.substring(1);
+            const digimonName = window.location.hash.substring(1).replace(/_/g, ' ');
             const digimon = data.find(d => d.Name.toLowerCase() === digimonName.toLowerCase());
             if (digimon) {
                 showDetails(digimon);
@@ -344,6 +377,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }).catch(function(error) {
         console.error('Error loading the CSV file:', error);
     });
+
+    
 });
 
 window.addEventListener('scroll', function() {
@@ -355,3 +390,4 @@ window.addEventListener('scroll', function() {
         navbar.classList.remove('scrolled');
     }
 });
+
