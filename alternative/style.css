@@ -23,7 +23,7 @@ body, html {
 .search-bar {
     width: 100%;
     position: fixed;
-    bottom: 0;
+    top: 0;
     background-color: #e519af;
     z-index: 10;
     padding: 16px;
@@ -38,7 +38,7 @@ body, html {
     opacity: 1; /* Firefox */
   }
 #search-input {
-    width: 50%;
+    width: 40%;
     height: 48px;
     font-size: 24px;
     font-weight: 300;
@@ -76,11 +76,11 @@ img {
   
 .logo {
     width: auto;
-    height: 240px;
+    height: 160px;
     transition: transform 0.3s ease, height 0.3s ease;
     position: fixed;
-    top: 32px;
-    left: 32px;
+    top: 16px;
+    left: 64px;
     z-index: 10;
     filter: brightness(1) drop-shadow(10px 10px 8px rgba(0,0,0,0.5));;
 
@@ -362,7 +362,9 @@ h3 {
     background-position: center;
     background-repeat: no-repeat;
 }
-
+.container-list{
+    padding-top: 96px;
+}
 .container {
     position: relative;
 }
@@ -588,8 +590,13 @@ h3 {
     h1 {    margin-top: 64px;
     }
     .logo{
+        margin-top: 96px;
         position: relative;
+        z-index: inherit;
 
+    }
+    .container-list{
+        padding-top: 0px;
     }
     .evolution {
         display: flex;
@@ -776,3 +783,63 @@ h3 {
     font-weight: 700;
 }
 
+.footer {
+    background-color: #e519af;
+    color: #fff;
+    padding: 20px 20px 0px 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 50%;
+    margin: auto;
+}
+
+.footer-section {
+    margin: 10px;
+    flex: 1 1 200px;
+}
+
+.footer-section h3 {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+.footer-bottom {
+    background-color: rgba(0, 0, 0,0.2);
+    font-size: 1.2em;
+    padding: 32px;
+}
+.footer-bottom a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        flex-direction: column;
+    }
+}
