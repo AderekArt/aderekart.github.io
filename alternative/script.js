@@ -182,6 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'Emiluna': 'https://twitter.com/Ochistrikitu',
             'Thais Inoue': 'https://x.com/Thaino_Noronha',
             'BarillRojas': 'https://x.com/BarillRojas',
+            'Jonatas Carmona': 'https://x.com/JonatasCarmona',
 
         };
 
