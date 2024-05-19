@@ -174,6 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, { once: true });
             } else {
                 displayDetails(digimon);
+                updateMetaTags(digimon);  // Atualiza as metatags
+
             }
         }
 
@@ -185,7 +187,16 @@ document.addEventListener('DOMContentLoaded', function() {
             'Jonatas Carmona': 'https://x.com/JonatasCarmona',
 
         };
-
+        function updateMetaTags(digimon) {
+            const metaTitle = document.querySelector('meta[property="og:title"]');
+            const metaImage = document.querySelector('meta[property="og:image"]');
+            const metaDescription = document.querySelector('meta[property="og:description"]');
+        
+            if (metaTitle) metaTitle.setAttribute('content', `Digital Monster: ${digimon.Name}`);
+            if (metaImage) metaImage.setAttribute('content', `images/${digimon.Name}.png`);
+            if (metaDescription) metaDescription.setAttribute('content', digimon.Description);
+        }
+        
         function displayDetails(digimon) {
             overlay.classList.remove('hidden');
             container.classList.remove('hidden');
