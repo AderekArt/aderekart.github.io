@@ -181,6 +181,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'Aderek': 'https://x.com/AderekArt',
             'Emiluna': 'https://twitter.com/Ochistrikitu',
             'Thais Inoue': 'https://x.com/Thaino_Noronha',
+            'BarillRojas': 'https://x.com/BarillRojas',
+
         };
 
         function displayDetails(digimon) {
@@ -196,16 +198,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const variationsHTML = parseVariations(digimon['Alternative']);
             const galleryHTML = parseGallery(digimon['Gallery']);
 
-            let authorLink;
-            if (authorProfiles[digimon.Author]) {
-                const authorProfile = authorProfiles[digimon.Author];
-                authorLink = `<a href="${authorProfile}" target="_blank">
-                                <img style="height: 2em; width: auto; background: none; vertical-align: middle;" src="https://visualpharm.com/assets/652/Pen-595b40b75ba036ed117d9a7d.svg" alt="Author Image">
-                                ${digimon.Author}
-                              </a>`;
-            } else {
-                authorLink = `<img style="height: 2em; width: auto; background: none; vertical-align: middle;" src="https://visualpharm.com/assets/652/Pen-595b40b75ba036ed117d9a7d.svg" alt="Author Image">
-                              ${digimon.Author}`;
+            let authorsHTML = '';
+            if (digimon.Author) {
+                const authors = digimon.Author.split(',').map(author => author.trim());
+                authorsHTML = authors.map(author => {
+                    const authorProfile = authorProfiles[author] || '';
+                    if (authorProfile) {
+                        return `<a href="${authorProfile}" target="_blank">
+                                    <img style="height: 2em; width: auto; background: none; vertical-align: middle;" src="https://visualpharm.com/assets/652/Pen-595b40b75ba036ed117d9a7d.svg" alt="Author Image">
+                                    ${author}
+                                </a>`;
+                    } else {
+                        return `<img style="height: 2em; width: auto; background: none; vertical-align: middle;" src="https://visualpharm.com/assets/652/Pen-595b40b75ba036ed117d9a7d.svg" alt="Author Image">
+                                ${author}`;
+                    }
+                }).join('  ');
             }
 
             digimonDetails.innerHTML = `
@@ -215,9 +222,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3>${digimon.Stage} - ${digimon.Attribute} - ${digimon.Type}</h3>
                 </div>
                 <img src="images/${digimon.Name}.png" alt="${digimon.Name}">
-                <p style="line-height: 2em;">
-                    <b>${authorLink}</b>
-                </p>
+                <div style="line-height: 2em; display:flex!important; flex-direction:column!important; font-weight:bold;margin:16px;gap:5px;">
+                    ${authorsHTML}
+                </div>
                 <div class="profile">
                     <h3>Profile</h3>
                     <p>${digimon.Description}</p>
