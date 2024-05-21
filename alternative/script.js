@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'Thais Inoue': 'https://x.com/Thaino_Noronha',
             'BarillRojas': 'https://x.com/BarillRojas',
             'Jonatas Carmona': 'https://x.com/JonatasCarmona',
-
+            'Shewdon Barcelos': 'https://x.com/ShewdonBarcelos',
         };
         function updateMetaTags(digimon) {
             const metaTitle = document.querySelector('meta[property="og:title"]');
