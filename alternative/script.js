@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
         function parseGallery(gallery) {
             if (!gallery) return '';
             const images = gallery.split(',').map(item => {
-                const match = item.match(/^(.+)\s\[Art by:(.+?);\s*(https?:\/\/[^\]]+)\]$/);
+                const match = item.match(/^(.+)\s\[Art by:(.+?) url=\s*(https?:\/\/[^\]]+)\]$/);
                 const imageUrl = match ? match[1].trim() : item.trim();
                 const artist = match ? match[2].trim() : '';
                 const artistLink = match ? match[3].trim() : '';
