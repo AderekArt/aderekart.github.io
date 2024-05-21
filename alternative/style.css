@@ -313,7 +313,7 @@ h3 {
     width: 640px;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    max-height: 80vh;
+    max-height: 90vh;
     overflow-y: auto; /* Permite rolagem vertical */
     position: relative; /* Necessário para que o botão seja posicionado corretamente */
     max-width: 85vw !important;
@@ -335,6 +335,7 @@ h3 {
     color: #000;
     font-family: 'Arial', sans-serif;
     text-shadow: none;
+    margin-top:0px;
 }
 #digimon-details.baby {
     background-color: #dd376f;
@@ -431,6 +432,9 @@ h3 {
     grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
     gap: 10px;
 }
+.variation-card p {
+    margin: 4px; /* Remove a margem padrão do parágrafo */
+}
 
 .variation-card {
     display: flex;
@@ -487,6 +491,13 @@ h3 {
 .digimon-card.champion img {
     padding: 10px;
     background-image: url(./data/bg-champion.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+.digimon-card.champion.alt-original img {
+    padding: 10px;
+    background-image: url(./data/bg-champion-original.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom center;
@@ -842,4 +853,32 @@ h3 {
     .footer-container {
         flex-direction: column;
     }
+}
+
+.category-tag{
+    width: fit-content;
+    margin: 12px auto 12px auto;
+    background-color: #000;
+    color: white;
+
+    font-weight: 700;
+    font-size: 0.75em;
+    padding: 4px;
+    border-radius: 32px;
+}
+.evo-tag{
+    margin: 0;
+    
+}
+
+.var-tag{
+    margin: 0 auto;
+    
+}
+.category-tag.alt-version {
+    background-color:#e519af;
+}
+
+.category-tag.alt-original {
+    background-color: #2853f9;
 }

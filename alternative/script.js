@@ -99,8 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             for (const stage in stages) {
                 if (stages.hasOwnProperty(stage)) {
-                    stages[stage].sort((a, b) => a.Name.localeCompare(b.Name));
-
                     const stageSection = document.createElement('div');
                     stageSection.className = 'stage-section';
 
@@ -108,16 +106,32 @@ document.addEventListener('DOMContentLoaded', function() {
                     stageHeader.textContent = stage;
                     stageSection.appendChild(stageHeader);
 
+                    // Ordenar por categoria dentro de cada estágio
+                    const sortedDigimons = stages[stage].sort((a, b) => {
+                        if (a.Category === 'Alt Version' && b.Category !== 'Alt Version') {
+                            return -1; // "alt version" vem primeiro
+                        }
+                        if (a.Category !== 'Alt Version' && b.Category === 'Alt Version') {
+                            return 1; // "alt version" vem primeiro
+                        }
+                        if (a.Category === b.Category) {
+                            return a.Name.localeCompare(b.Name); // Ordenar por nome dentro da mesma categoria
+                        }
+                        return a.Category.localeCompare(b.Category); // Ordenar por categoria
+                    });
+                    
                     const cardsContainer = document.createElement('div');
                     cardsContainer.className = 'digimon-cards-container';
                     stageSection.appendChild(cardsContainer);
 
-                    stages[stage].forEach(digimon => {
+                    sortedDigimons.forEach(digimon => {
                         const card = document.createElement('div');
-                        card.className = `digimon-card ${digimon.Stage.toLowerCase()}`;
+                        card.className = `digimon-card ${digimon.Stage.toLowerCase()} `;
                         card.innerHTML = `
                             <img src="images/${digimon.Name}.png" alt="${digimon.Name}">
                             <h3>${digimon.Name}</h3>
+                            ${digimon.Category !== 'Alt Version' ? `<div class=" category-tag ${digimon.Category.toLowerCase().replace(/\s+/g, '-')}">${digimon.Category}</div>` : ''}
+
                         `;
                         card.addEventListener('click', () => showDetails(digimon));
                         cardsContainer.appendChild(card);
@@ -231,6 +245,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <button onclick="closeDetails()">X</button>
                 <h2>${digimon.Name}</h2>
                 <div class="digimon-info">
+                <div class="category-tag ${digimon.Category.toLowerCase().replace(/\s+/g, '-')}">${digimon.Category}</div>
+
                     <h3>${digimon.Stage} - ${digimon.Attribute} - ${digimon.Type}</h3>
                 </div>
                 <img src="images/${digimon.Name}.png" alt="${digimon.Name}">
@@ -284,9 +300,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (digimon) {
                     return `<div class="evolution-card" data-name="${digimonName}">
                                 <img src="images/${digimonName}.png" alt="${digimonName}">
-                                <div>
+                                <div class="evolution-details">
                                     <p><b>${digimonName}</b></p>
                                     ${additionalInfo ? `<p>${additionalInfo}</p>` : ''}
+                                    ${digimon.Category !== 'Alt Version' ? `<div class="evo-tag category-tag ${digimon.Category.toLowerCase().replace(/\s+/g, '-')}">${digimon.Category}</div>` : ''}
                                 </div>
                             </div>`;
                 }
@@ -307,9 +324,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (digimon) {
                     return `<div class="variation-card" data-name="${digimonName}">
                                 <img src="images/${digimonName}.png" alt="${digimonName}">
-                                <div>
+                                <div class="variations-details">
                                     <p><b>${digimonName}</b></p>
                                     ${additionalInfo ? `<p>${additionalInfo}</p>` : ''}
+                                    ${digimon.Category !== 'Alt Version' ? `<div class=" var-tag category-tag ${digimon.Category.toLowerCase().replace(/\s+/g, '-')}">${digimon.Category}</div>` : ''}
+
                                 </div>
                             </div>`;
                 }
