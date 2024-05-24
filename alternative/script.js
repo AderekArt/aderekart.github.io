@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const evolveToHTML = parseEvolution(digimon['Evolve To']);
             const variationsHTML = parseVariations(digimon['Alternative']);
             const galleryHTML = parseGallery(digimon['Gallery']);
-
+        
             let authorsHTML = '';
             if (digimon.Author) {
                 const authors = digimon.Author.split(',').map(author => author.trim());
@@ -240,16 +240,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }).join('  ');
             }
-
+        
             digimonDetails.innerHTML = `
                 <button onclick="closeDetails()">X</button>
                 <h2>${digimon.Name}</h2>
                 <div class="digimon-info">
-                <div class="category-tag ${digimon.Category.toLowerCase().replace(/\s+/g, '-')}">${digimon.Category}</div>
-
+                    <div class="category-tag ${digimon.Category.toLowerCase().replace(/\s+/g, '-')}">${digimon.Category}</div>
                     <h3>${digimon.Stage} - ${digimon.Attribute} - ${digimon.Type}</h3>
                 </div>
-                <img src="images/${digimon.Name}.png" alt="${digimon.Name}">
+                <div class="art-container">
+                    <img id="digimon-image" src="images/${digimon.Name}.png" alt="${digimon.Name}">
+                </div>
                 <div style="line-height: 2em; display:flex!important; flex-direction:column!important; font-weight:bold;margin:16px;gap:5px;">
                     ${authorsHTML}
                 </div>
@@ -284,8 +285,35 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 `;
             }
+        
+            // Verificar se existem imagens adicionais e adicionar o botão de toggle
+            const imagePaths = [];
+            let imageIndex = 0;
+        
+            for (let i = 0; i < 10; i++) {
+                const imagePath = i === 0 ? `images/${digimon.Name}.png` : `images/${digimon.Name}(${i}).png`;
+                const img = new Image();
+                img.src = imagePath;
+                img.onload = function() {
+                    imagePaths.push(imagePath);
+                    if (imagePaths.length > 1 && !document.getElementById('toggle-art-button')) {
+                        const artContainer = document.querySelector('.art-container');
+                        const toggleArtButton = document.createElement('button');
+                        toggleArtButton.id = 'toggle-art-button';
+                        toggleArtButton.onclick = function() {
+                            imageIndex = (imageIndex + 1) % imagePaths.length;
+                            const digimonImage = document.getElementById('digimon-image');
+                            digimonImage.src = imagePaths[imageIndex];
+                        };
+                        artContainer.appendChild(toggleArtButton);
+                    }
+                };
+            }
+        
             addLinkHandlers();
         }
+        
+        
 
         function parseEvolution(evolution) {
             if (!evolution) return '';

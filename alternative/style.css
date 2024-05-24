@@ -882,3 +882,32 @@ h3 {
 .category-tag.alt-original {
     background-color: #2853f9;
 }
+
+.art-container {
+    position: relative;
+    display: inline-block;
+}
+
+#toggle-art-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    left:auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url("./imgs/toggle.png");
+    background-size: contain;
+    background-color: #007bff;
+
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#toggle-art-button:hover {
+    background-color: #0056b3;
+}
