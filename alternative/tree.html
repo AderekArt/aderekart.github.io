@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href=".style.css">
 
     <title>Digimon Evolution Tree</title>
     <style>
@@ -70,6 +70,37 @@
             text-anchor: middle;
             pointer-events: none;
         }
+
+
+
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+}
+
+.link.highlight1 {
+    stroke: red;
+    stroke-width: 4px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+    z-index: 10;
+
+}
+.link.highlight2 {
+    stroke: blue;
+    stroke-width: 4px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+
+}
+
+.link.highlight3 {
+    stroke: greenyellow;
+    stroke-width: 4px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+
+}
     </style>
 </head>
 <body>
