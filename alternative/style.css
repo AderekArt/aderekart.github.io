@@ -627,7 +627,7 @@ text-align: center;
         gap: 20px; /* Adiciona espaçamento de 10px entre as divs */
     }
 
-.container{margin-top: 20%; }
+.container{margin-top: 10%; }
 }
 #digimon-details {
     background: white;
