@@ -626,8 +626,21 @@ text-align: center;
         margin-top: 10px;
         gap: 20px; /* Adiciona espaçamento de 10px entre as divs */
     }
-}
 
+.container{margin-top: 20%; }
+}
+#digimon-details {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 640px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    max-width: 85vw !important;
+}
 .banner {
     width:100%;
     background-color: #08c8f9;
