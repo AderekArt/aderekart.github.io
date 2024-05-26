@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const svgWidth = maxX - minX + nodeWidth + nodeSpacingX * 2;
             const svgHeight = (maxY - minY + nodeHeight + nodeSpacingY * 2) + 64;
 
-            // Set the SVG height to the container height and adjust width accordingly
+            // Set the SVG height to the container height and adjust width accorfdingly
             const containerHeight = document.getElementById('evolution-tree').clientHeight;
             const containerWidth = document.getElementById('evolution-tree').clientWidth;
 
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     highlightDuplicateNodes(d, false);
                 })
                 .on('click', function(event, d) {
-                    window.location.href = `/index.html#${d.name}`;
+                    window.location.href = `/alternative#${d.name}`;
                 });
 
             nodes.append('rect')
