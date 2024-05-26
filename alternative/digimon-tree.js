@@ -144,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
                .attr('height', containerHeight)
                .attr('width', adjustedWidth);
 
-
             const g = svg.append('g')
 
             const initialTranslateX = (containerWidth - svgWidth) / 2;
@@ -159,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Apply the initial transform
             svg.call(zoom)
                .call(zoom.transform, d3.zoomIdentity.translate(initialTranslateX, 0));
-            
 
             const nodes = g.selectAll('.node')
                 .data(Array.from(relevantNodes), d => d.name)
@@ -173,6 +171,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .on('mouseout', function(event, d) {
                     highlightDuplicateNodes(d, false);
+                })
+                .on('click', function(event, d) {
+                    window.location.href = `/index.html#${d.name}`;
                 });
 
             nodes.append('rect')
@@ -213,7 +214,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             function getStageClass(digimonName) {
                 const digimon = filteredData.find(d => d.Name === digimonName);
-                return digimon ? digimon.Stage.toLowerCase().replace(/\s+/g, '-') : '';
+                let stageClass = digimon ? digimon.Stage.toLowerCase().replace(/\s+/g, '-') : '';
+                if (digimon && digimon.Name.toLowerCase() === baseDigimon.Name.toLowerCase()) {
+                    stageClass += ' base-digimon';
+                }
+                return stageClass;
             }
 
             function highlightLinks(node, highlight) {
@@ -263,8 +268,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentNode.children.forEach(child => {
                         const linkKey = `${currentNode.name}->${child.name}`;
                         if (!allLinks.has(linkKey)) {
-                            allLinks.set(linkKey, { source: currentNode.name, target: child.name, index: index });
-                            collectDescendants(child, index);
+                            allLinks.set(linkKey, { source: currentNode.name, target: child.name, index: 1 });
+                            collectDescendants(child, 1);
                         }
                     });
                 };

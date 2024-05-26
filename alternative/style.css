@@ -335,7 +335,17 @@ h3 {
     color: #000;
     font-family: 'Arial', sans-serif;
     text-shadow: none;
+    margin: 16px !important;;
+    margin: auto;
+}
+
+#digimon-details h4 {
+    color: #000;
+    font-family: 'Arial', sans-serif;
+    text-shadow: none;
     margin-top:0px;
+    margin: auto;
+text-align: center;
 }
 #digimon-details.baby {
     background-color: #dd376f;
@@ -917,31 +927,3 @@ h3 {
 
 }
 
-
-.link {
-    fill: none;
-    stroke: #ccc;
-    stroke-width: 2px;
-    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
-}
-
-.link.highlight1 {
-    stroke: red;
-    stroke-width: 4px;
-    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
-    z-index: 10;
-
-}
-.link.highlight2 {
-    stroke: blue;
-    stroke-width: 4px;
-    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
-
-}
-
-.link.highlight3 {
-    stroke: greenyellow;
-    stroke-width: 4px;
-    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
-
-}

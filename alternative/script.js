@@ -263,15 +263,25 @@ document.addEventListener('DOMContentLoaded', function() {
         
             if (evolveFromHTML !== '' || evolveToHTML !== '') {
                 digimonDetails.innerHTML += `
-                <div class="evolution">
+                <div style="display: flex; align-items: center; position: relative;padding:8px;">
+                <h3 style="margin: 0 auto 0 0; position: absolute; left: 50%; transform: translateX(-50%);">Evolutions</h3>
+                <a href="/tree.html#${digimon.Name}" target="_blank" style="margin-left: auto;">
+                  <div style="border: 2px solid black; width: fit-content; padding: 8px; border-radius: 12px; color:black;"> 
+                    See Evolution tree 
+                  </div>
+                </a>
+              </div>
+              
+                              <div class="evolution">
+
                     ${evolveFromHTML !== '' ? `
                     <div class="evolve-from">
-                        <h3>Evolves From</h3>
+                        <h4>Evolves From</h4>
                         ${evolveFromHTML}
                     </div>` : ''}
                     ${evolveToHTML !== '' ? `
                     <div class="evolve-to">
-                        <h3>Evolves To</h3>
+                        <h4>Evolves To</h4>
                         ${evolveToHTML}
                     </div>` : ''}
                 </div>`;
