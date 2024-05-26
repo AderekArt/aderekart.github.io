@@ -132,32 +132,65 @@ document.addEventListener('DOMContentLoaded', function() {
             const maxY = Math.max(...Array.from(relevantNodes).map(d => d.y));
             const svgWidth = maxX - minX + nodeWidth + nodeSpacingX * 2;
             const svgHeight = maxY - minY + nodeHeight + nodeSpacingY * 2;
-            
+
             // Set the SVG height to the container height and adjust width accordingly
             const containerHeight = document.getElementById('evolution-tree').clientHeight;
             const containerWidth = document.getElementById('evolution-tree').clientWidth;
 
             const aspectRatio = svgWidth / svgHeight;
             const adjustedWidth = containerHeight * aspectRatio;
-            
-            svg.attr('viewBox', `${minX - nodeSpacingX} ${minY - nodeSpacingY} ${containerWidth} ${svgHeight}`)
-               .attr('height', containerHeight)
-               .attr('width', adjustedWidth);
+
+            svg.attr('viewBox', `${minX - nodeSpacingX} ${minY - nodeSpacingY} ${svgWidth} ${svgHeight}`)
+                .attr('width', '100%')
+                .attr('height', '100%');
 
             const g = svg.append('g')
 
-            const initialTranslateX = (containerWidth - svgWidth) / 2;
-
+            const initialTranslateX = 0
             const zoom = d3.zoom()
                 .scaleExtent([1, 3])
                 .translateExtent([[minX - nodeSpacingX, minY - nodeSpacingY], [maxX + nodeWidth + nodeSpacingX, maxY + nodeHeight + nodeSpacingY]])
                 .on('zoom', function(event) {
                     g.attr('transform', event.transform);
                 });
-            
+
             // Apply the initial transform
             svg.call(zoom)
-               .call(zoom.transform, d3.zoomIdentity.translate(initialTranslateX, 0));
+                .call(zoom.transform, d3.zoomIdentity.translate(initialTranslateX, 0));
+
+            // Detect if the device is mobile
+            const isMobile = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (isMobile()) {
+                svg.call(zoom)
+                    .on("touchstart.zoom", null)
+                    .on("touchmove.zoom", null)
+                    .on("touchend.zoom", null)
+                    .on("touchstart", function(event) {
+                        const touches = event.touches;
+                        if (touches.length === 2) {
+                            const p1 = [touches[0].clientX, touches[0].clientY];
+                            const p2 = [touches[1].clientX, touches[1].clientY];
+                            const dist = Math.sqrt(Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2));
+                            svg.attr('data-touch-dist', dist);
+                        }
+                    })
+                    .on("touchmove", function(event) {
+                        const touches = event.touches;
+                        if (touches.length === 2) {
+                            const p1 = [touches[0].clientX, touches[0].clientY];
+                            const p2 = [touches[1].clientX, touches[1].clientY];
+                            const dist = Math.sqrt(Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2));
+                            const initialDist = svg.attr('data-touch-dist');
+                            if (initialDist) {
+                                const scale = dist / initialDist;
+                                const transform = d3.zoomTransform(svg.node());
+                                const newTransform = transform.scale(scale);
+                                g.attr('transform', newTransform);
+                            }
+                        }
+                    });
+            }
 
             const nodes = g.selectAll('.node')
                 .data(Array.from(relevantNodes), d => d.name)
@@ -173,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     highlightDuplicateNodes(d, false);
                 })
                 .on('click', function(event, d) {
-                    window.location.href = `/alternative#${d.name}`;
+                    window.location.href = `/nidex.html#${d.name}`;
                 });
 
             nodes.append('rect')
@@ -291,12 +324,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 links.classed('highlight1', false)
-                     .classed('highlight2', false)
-                     .classed('highlight3', false);
+                    .classed('highlight2', false)
+                    .classed('highlight3', false);
 
                 allLinks.forEach(link => {
                     links.filter(d => d.source.name === link.source && d.target.name === link.target)
-                         .classed(`highlight${link.index}`, highlight);
+                        .classed(`highlight${link.index}`, highlight);
                 });
 
                 if (highlight) {
@@ -305,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
             }
-                        
+
         } else {
             console.error('Digimon not found');
         }
