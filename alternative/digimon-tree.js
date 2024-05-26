@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const minY = Math.min(...Array.from(relevantNodes).map(d => d.y));
             const maxY = Math.max(...Array.from(relevantNodes).map(d => d.y));
             const svgWidth = maxX - minX + nodeWidth + nodeSpacingX * 2;
-            const svgHeight = maxY - minY + nodeHeight + nodeSpacingY * 2;
+            const svgHeight = (maxY - minY + nodeHeight + nodeSpacingY * 2) + 64;
 
             // Set the SVG height to the container height and adjust width accordingly
             const containerHeight = document.getElementById('evolution-tree').clientHeight;
