@@ -263,14 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
             if (evolveFromHTML !== '' || evolveToHTML !== '') {
                 digimonDetails.innerHTML += `
-                <div style="display: flex; align-items: center; position: relative;padding:8px;">
-                <h3 style="margin: 0 auto 0 0; position: absolute; left: 50%; transform: translateX(-50%);">Evolutions</h3>
-                <a href="tree.html#${digimon.Name}" target="_blank" style="margin-left: auto;">
-                  <div style="border: 2px solid black; width: fit-content; padding: 8px; border-radius: 12px; color:black;"> 
-                    See Evolution tree 
-                  </div>
-                </a>
-              </div>
+
               
                               <div class="evolution">
 
@@ -284,7 +277,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         <h4>Evolves To</h4>
                         ${evolveToHTML}
                     </div>` : ''}
-                </div>`;
+                </div>
+                
+                <div style="display: flex; align-items: center; position: relative;padding:8px;">
+                <a href="tree.html#${digimon.Name}" target="_blank" style="margin-left: auto;">
+                  <div style=" width: fit-content; padding: 8px; border-radius: 12px; color:black; font-weight:bold;"> 
+                    See Evolution tree >
+                  </div>
+                </a>
+              </div>
+                `;
             }
         
             if (variationsHTML !== '') {
@@ -390,12 +392,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3>Gallery</h3>
                     <div class="gallery-container">
                         ${images.map(image => `
+                        <div style="width: fit-content;                        ">
                             <a href="${image.artistLink}" target="_blank" class="gallery-item-link">
                                 <div class="gallery-item">
                                     <img src="./images/${image.imageUrl}">
                                     <div class="gallery-desc">${image.description}</div>
                                 </div>
                             </a>
+                            </div>
                         `).join('')}
                     </div>
                 </div>
