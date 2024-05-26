@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     highlightDuplicateNodes(d, false);
                 })
                 .on('click', function(event, d) {
-                    window.location.href = `/index.html#${d.name}`;
+                    window.location.href = `/alternative#${d.name}`;
                 });
 
             nodes.append('rect')
