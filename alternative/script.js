@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 digimonDetails.innerHTML += `
                 <div style="display: flex; align-items: center; position: relative;padding:8px;">
                 <h3 style="margin: 0 auto 0 0; position: absolute; left: 50%; transform: translateX(-50%);">Evolutions</h3>
-                <a href="alternative/tree.html#${digimon.Name}" target="_blank" style="margin-left: auto;">
+                <a href="/tree.html#${digimon.Name}" target="_blank" style="margin-left: auto;">
                   <div style="border: 2px solid black; width: fit-content; padding: 8px; border-radius: 12px; color:black;"> 
                     See Evolution tree 
                   </div>
