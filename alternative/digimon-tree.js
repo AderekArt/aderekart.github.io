@@ -139,24 +139,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const aspectRatio = svgWidth / svgHeight;
             const adjustedWidth = containerHeight * aspectRatio;
-
-            svg.attr('viewBox', `${minX - nodeSpacingX} ${minY - nodeSpacingY} ${svgWidth} ${svgHeight}`)
-                .attr('width', '100%')
-                .attr('height', '100%');
+            
+            svg.attr('viewBox', `${minX - nodeSpacingX} ${minY - nodeSpacingY} ${containerWidth} ${svgHeight}`)
+               .attr('height', containerHeight)
+               .attr('width', adjustedWidth);
 
             const g = svg.append('g')
 
-            const initialTranslateX = 0
+            const initialTranslateX = (containerWidth - svgWidth) / 2;
+
             const zoom = d3.zoom()
                 .scaleExtent([1, 3])
                 .translateExtent([[minX - nodeSpacingX, minY - nodeSpacingY], [maxX + nodeWidth + nodeSpacingX, maxY + nodeHeight + nodeSpacingY]])
                 .on('zoom', function(event) {
                     g.attr('transform', event.transform);
                 });
-
-            // Apply the initial transform
-            svg.call(zoom)
-                .call(zoom.transform, d3.zoomIdentity.translate(initialTranslateX, 0));
 
             // Detect if the device is mobile
             const isMobile = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -190,7 +187,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         }
                     });
+            } else {
             }
+            svg.call(zoom)
+            .call(zoom.transform, d3.zoomIdentity.translate(initialTranslateX, 0));
 
             const nodes = g.selectAll('.node')
                 .data(Array.from(relevantNodes), d => d.name)
