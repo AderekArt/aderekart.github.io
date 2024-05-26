@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     highlightDuplicateNodes(d, false);
                 })
                 .on('click', function(event, d) {
-                    window.location.href = `/nidex.html#${d.name}`;
+                    window.location.href = `/index.html#${d.name}`;
                 });
 
             nodes.append('rect')
