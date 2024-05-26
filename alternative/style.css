@@ -911,3 +911,37 @@ h3 {
 #toggle-art-button:hover {
     background-color: #0056b3;
 }
+.node rect {
+    fill: #fff;
+    stroke-width: 3px;
+
+}
+
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+}
+
+.link.highlight1 {
+    stroke: red;
+    stroke-width: 4px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+    z-index: 10;
+
+}
+.link.highlight2 {
+    stroke: blue;
+    stroke-width: 4px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+
+}
+
+.link.highlight3 {
+    stroke: greenyellow;
+    stroke-width: 4px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+
+}
