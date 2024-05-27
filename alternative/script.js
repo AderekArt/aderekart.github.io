@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     d3.csv('data/digimons.csv').then(function(data) {
+        // Filtrar as linhas vazias
+        data = data.filter(digimon => Object.values(digimon).some(value => value.trim() !== ''));
+
         const digimonList = document.getElementById('digimon-list');
         const overlay = document.getElementById('overlay');
         const digimonDetails = document.getElementById('digimon-details');
@@ -119,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                         return a.Category.localeCompare(b.Category); // Ordenar por categoria
                     });
-                    
+
                     const cardsContainer = document.createElement('div');
                     cardsContainer.className = 'digimon-cards-container';
                     stageSection.appendChild(cardsContainer);
@@ -176,11 +179,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.style.position = 'fixed';
                 document.body.style.top = `-${lastScrollPosition}px`;
             }
-        
+
             if (!overlay.classList.contains('hidden')) {
                 container.classList.add('closing');
                 overlay.classList.add('closing');
-        
+
                 container.addEventListener('animationend', function() {
                     overlay.classList.remove('closing');
                     container.classList.remove('closing');
@@ -205,25 +208,25 @@ document.addEventListener('DOMContentLoaded', function() {
             const metaTitle = document.querySelector('meta[property="og:title"]');
             const metaImage = document.querySelector('meta[property="og:image"]');
             const metaDescription = document.querySelector('meta[property="og:description"]');
-        
+
             if (metaTitle) metaTitle.setAttribute('content', `Digital Monster: ${digimon.Name}`);
             if (metaImage) metaImage.setAttribute('content', `images/${digimon.Name}.png`);
             if (metaDescription) metaDescription.setAttribute('content', digimon.Description);
         }
-        
+
         function displayDetails(digimon) {
             overlay.classList.remove('hidden');
             container.classList.remove('hidden');
             digimonDetails.className = '';
             digimonDetails.classList.add(digimon.Stage.toLowerCase());
-        
+
             window.location.hash = digimon.Name.replace(/ /g, '_');
-        
+
             const evolveFromHTML = parseEvolution(digimon['Evolve From']);
             const evolveToHTML = parseEvolution(digimon['Evolve To']);
             const variationsHTML = parseVariations(digimon['Alternative']);
             const galleryHTML = parseGallery(digimon['Gallery']);
-        
+
             let authorsHTML = '';
             if (digimon.Author) {
                 const authors = digimon.Author.split(',').map(author => author.trim());
@@ -240,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }).join('  ');
             }
-        
+
             digimonDetails.innerHTML = `
                 <button onclick="closeDetails()">X</button>
                 <h2>${digimon.Name}</h2>
@@ -260,11 +263,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 ${galleryHTML}
             `;
-        
+
             if (evolveFromHTML !== '' || evolveToHTML !== '') {
                 digimonDetails.innerHTML += `
 
-              
+
                               <div class="evolution">
 
                     ${evolveFromHTML !== '' ? `
@@ -278,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         ${evolveToHTML}
                     </div>` : ''}
                 </div>
-                
+
                 <div style="display: flex; align-items: center; position: relative;padding:8px;">
                 <a href="tree.html#${digimon.Name}" target="_blank" style="margin-left: auto;">
                   <div style=" width: fit-content; padding: 8px; border-radius: 12px; color:black; font-weight:bold;"> 
@@ -288,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
               </div>
                 `;
             }
-        
+
             if (variationsHTML !== '') {
                 digimonDetails.innerHTML += `
                     <h3>Subspecies/Variations</h3>
@@ -297,11 +300,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 `;
             }
-        
+
             // Verificar se existem imagens adicionais e adicionar o botão de toggle
             const imagePaths = [];
             let imageIndex = 0;
-        
+
             for (let i = 0; i < 10; i++) {
                 const imagePath = i === 0 ? `images/${digimon.Name}.png` : `images/${digimon.Name}(${i}).png`;
                 const img = new Image();
@@ -321,11 +324,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 };
             }
-        
+
             addLinkHandlers();
         }
-        
-        
 
         function parseEvolution(evolution) {
             if (!evolution) return '';
@@ -392,14 +393,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3>Gallery</h3>
                     <div class="gallery-container">
                         ${images.map(image => `
-                        <div style="width: fit-content;                        ">
                             <a href="${image.artistLink}" target="_blank" class="gallery-item-link">
                                 <div class="gallery-item">
                                     <img src="./images/${image.imageUrl}">
                                     <div class="gallery-desc">${image.description}</div>
                                 </div>
                             </a>
-                            </div>
                         `).join('')}
                     </div>
                 </div>
@@ -423,12 +422,12 @@ document.addEventListener('DOMContentLoaded', function() {
             container.classList.add('closing');
             overlay.classList.add('closing');
             window.location.hash = '';
-        
+
             container.addEventListener('animationend', function() {
                 container.classList.add('hidden');
                 container.classList.remove('closing');
             }, { once: true });
-        
+
             overlay.addEventListener('animationend', function() {
                 overlay.classList.add('hidden');
                 overlay.classList.remove('closing');
