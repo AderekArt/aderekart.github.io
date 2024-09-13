@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Digimon Evolution Tree</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Esconde o excesso do conteúdo */
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            
+        }
+        .node{    cursor: pointer;
+}
+        .node rect {
+            stroke: none;
+            
+        }
+        .node text{
+            text-align: center;
+    font-family: 'Cordel Groteska', sans-serif;
+    fill: white;
+    stroke: black;
+    stroke-width: 2px;
+    -webkit-touch-callout: none;  /* iPhone OS, Safari */
+    -webkit-user-select: none;    /* Chrome, Safari 3 */
+    -khtml-user-select: none;     /* Safari 2 */
+    -moz-user-select: none;       /* Firefox */
+    -ms-user-select: none;        /* IE10+ */
+    user-select: none;            /* Possível implementação no futuro */
+    
+    paint-order: stroke fill; /* draw the stroke first, then the fill, then the markers */
+
+        }
+        .node.baby rect {
+    fill: #dd376f;
+}
+.node.in-training rect{
+    fill: #dd376f;
+}
+
+.node.rookie rect{
+    fill: #ffcb00;
+}
+
+.node.champion rect {
+    fill: #28db43;
+}
+.node.perfect rect{
+    fill: #08c8f9;
+}
+        .node image {
+            pointer-events: none;
+        }
+        .node text {
+            font-size: 12px;
+            text-anchor: middle;
+            pointer-events: none;
+        }
+
+
+
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+}
+
+.link.highlight1 {
+    stroke: red;
+    stroke-width: 4px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+    z-index: 10;
+
+}
+.link.highlight2 {
+    stroke: blue;
+    stroke-width: 4px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+
+}
+
+.link.highlight3 {
+    stroke: greenyellow;
+    stroke-width: 4px;
+    transition: stroke 0.5s, stroke-width 0.5s; /* Adiciona transição para stroke e stroke-width */
+
+}
+
+.base-digimon rect{
+    stroke: white;
+    stroke-width: 2px;
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <svg id="evolution-tree"></svg>
+    </div>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="digimon-tree.js"></script>
+</body>
+</html>

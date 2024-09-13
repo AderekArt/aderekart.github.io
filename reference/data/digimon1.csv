@@ -1,0 +1,61 @@
+Name,Stage,Attribute,Type,Author,Description,Alternative,Evolve To,Hide
+Botamon,Baby,Free,Slime,Aderek,A small slime creature ready to evolve.,,"Koromon, Antedeguemon",
+Koromon,In-training,Free,Lesse,Aderek,,,"Agumon, BlackAgumon [With BlackDigitron], Betamon, ModokiBetamon, ToyAgumon, BlackToyAgumon",
+Agumon,Rookie,Vaccine,Reptile,Aderek,"Agumon is a small, dinosaur-like Digimon with a bright orange body and prominent green eyes. Its tough, scaled skin and sharp claws give it a fierce appearance despite its relatively small size. Known for its bravery and determination, Agumon possesses a fiery spirit and formidable combat abilities.
+
+Agumon's primary attack is Pepper Breath, where it spits small fireballs from its mouth. Agile and curious, it often explores its surroundings and interacts with other Digimon. Its adaptability allows it to thrive in various environments, making it a versatile and resilient Digimon.","BlackAgumon [with Black Digitron], ToyAgumon, YukiAgumon, ClearAgumon","Greymon, Tyrannomon, Tuskmon",
+BlackAgumon,Rookie,Vaccine,Reptile,Aderek,,Agumon,,
+Betamon,Rookie,Virus,Reptile,Aderek,,ModokiBetamon,"Greymon, Tyrannomon",
+Greymon,Champion,Vaccine,Dinosaur,Aderek,,,"MetalGreymon, GaruruGreymon[Jogressed with Garurumon]",
+ModokiBetamon,Rookie,Virus,Reptile,Aderek,,,,
+Angemon,Champion,Vaccine,Angel,Aderek,,,,
+Birdramon,Champion,Vaccine,Bird,Aderek,,,,True
+BlackGabumon,Rookie,Virus,Reptile,Aderek,,,,True
+BlackGarurumon,Champion,Virus,Beast,Aderek,,,,True
+BlackTailmon,Champion,Virus,Beast,Aderek,,,,
+BlackToyAgumon,Rookie,Data,Toy,Aderek,,,,True
+ClearAgumon,Rookie,Data,Reptile,Aderek,,,,True
+DeathMetalgreymon,Perfect,Virus,Cyborg,Aderek,,,,True
+Demon,Perfect,Virus,Devil,Aderek,,,,
+Devimon,Champion,Virus,Fallen Angel,Aderek,,,,
+MetalGreymon,Perfect,Virus,Cyborg,Aderek,,,,
+DoKunemon,Rookie,Free,Insect,Aderek,,,,True
+Elecmon,Rookie,Vaccine,Mammal,Aderek,,,,
+Elecmon (Purple),Rookie,Data,Mammal,Aderek,,,,
+Gabumon,Rookie,Data,Reptile,Aderek,,Psychemon,Garurumon,
+Gekomon,Champion,Virus,Amphibian,Aderek,,,,
+Geremon,Champion,Virus,Mutant,Aderek,,,,
+Garurumon,Champion,Data,Beast,Aderek,,,"WereGarurumon, GaruruGreymon[Jogressed with Greymon]",
+Gururumon,Champion,Data,Beast,Aderek,,,Astamon,
+HolyAngemon,Perfect,Vaccine,Angel,Aderek,,HolyAngemon (Priest),,
+IceDevimon,Champion,Virus,Fallen Angel,Aderek,,,,
+Kunemon,Rookie,Virus,Insect,Aderek,,,,
+Kuwagamon,Champion,Virus,Insect,Aderek,,,,
+LadyDevimon,Perfect,Virus,Fallen Angel,Aderek,,,,
+Mamemon,Perfect,Data,Mutant,Aderek,,,,
+Meramon,Champion,Data,Fire,Aderek,,,,
+Monochromon,Champion,Data,Dinosaur,Aderek,,,,
+Monzaemon,Perfect,Vaccine,Mutant,Aderek,,,,
+Navimon,Rookie,Vaccine,Insect,Aderek,,,,
+Numemon,Champion,Virus,Filth,Aderek,,,,
+Patamon,Rookie,Data,Mammal,Aderek,,,"Angemon, Pidmon",
+Pidmon,Champion,Free,Angel,Aderek,,,,
+Piyomon,Rookie,Free,Bird,Aderek,,,,
+HolyAngemon (Priest),Perfect,Free,Angel,Aderek,,,,
+Psychemon,Rookie,Virus,Reptile,Aderek,,,Gururumon,
+Seadramon,Champion,Data,Sea Animal,Aderek,,,,
+Shoutmon,Rookie,Data,Mini Dragon,Aderek,,,,True
+SkullGreymon,Perfect,Virus,Skeleton,Aderek,,,,
+Tailmon,Champion,Vaccine,Beast,Aderek,,,,
+ToyAgumon,Rookie,Data,Toy,Aderek,,,,
+Tsukaimon,Rookie,Virus,Mammal,Aderek,,Patamon,,
+Tuskmon,Champion,Virus,Dinosaur,Aderek,,,,
+Tuchidarumon,Champion,Virus,Beast,Aderek,,,ChoHakkaimon,
+Tyrannomon,Champion,Data,Dinosaur,Aderek,,,MetalGreymon,
+WarGreymon,Perfect,Vaccine,Dragon Warrior,Aderek,,,,True
+WereGarurumon,Perfect,Vaccine,Beast,Aderek,,,,
+YukiAgumon,Rookie,Free,Reptile,Aderek,,,,
+YukiDarumon,Champion,Vaccine,Beast,Aderek,,,,
+ChoHakkaimon,Perfect,Data,Puppet,Aderek,,,,
+GaruruGreymon,Perfect,Vaccine,Puppet,Paladin,,,,
+Astamon,Perfect,Virus,Beast,Aderek,,,,
